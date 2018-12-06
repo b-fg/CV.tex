@@ -1,0 +1,146 @@
+\documentclass[margin,line,pifont,palatino,courier]{res}
+
+\usepackage{pifont}
+\usepackage[latin1] { inputenc}
+%\topmargin .5in
+%\oddsidemargin -.5in
+%\evensidemargin -.5in
+%\textwidth=6.0in
+ \textheight=9.0in
+%\itemsep=0in
+%\parsep=0in
+\usepackage{fancyhdr}
+%\topmargin=0in
+%\textheight=8.5in
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage{hyperref}
+\hypersetup{
+	unicode=true, 
+	pdftitle={CV Bernat Font Garcia},
+	pdfauthor={Bernat Font Garcia},
+	pdfnewwindow=true, 
+	colorlinks=false, 	% (false,true)
+	pdfborder={0 0 0},	
+	linkcolor=blue,
+	linktoc=all, 		% (none,all) 
+	citecolor=red,
+	urlcolor=red,
+	breaklinks=true,
+}
+\fancyhf{}
+%\cfoot{\thepage}
+%\lfoot{\textit{\footnotesize Research Statement}}
+\rfoot{{\footnotesize Curriculum Vitae, Bernat Font Garcia, \thepage}}
+\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+
+\newenvironment{list1}{
+  \begin{list}{\ding{113}}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0.17in}}}{\end{list}}
+\newenvironment{list2}{
+  \begin{list}{$\bullet$}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0.2in}}}{\end{list}}
+
+\begin{document}
+\name{Bernat Font Garcia \vspace*{.1in}}
+\begin{resume}
+\section{\sc Contact Information}
+\vspace{.05in}
+
+\begin{tabular}{@{}p{0.76\linewidth}p{0.15\linewidth}}
+\href{mailto:b.fontgarcia@soton.ac.uk}{\texttt{b.fontgarcia@soton.ac.uk}} & \href{https://github.com/b-fg}{\texttt{github.com/b-fg}} \\
+\end{tabular}
+
+\section{\sc Research Interests}
+Computational fluid dynamics, turbulence, flow modelling, physics-based deep learning and data-driven models, high-perfomance computing. 
+
+\section{\sc Education}
+\begin{tabular}{@{}p{0.85\linewidth}p{0.15\linewidth}}
+\textbf{Ph.D. Candidate}, University of Southampton & 2015-2020\\ 
+\hspace*{1em}Ph.D. in Computational Fluid Dynamics &\\
+\hspace*{1em}\textit{Thesis}: Modelling of Flow Past Long Cylindrical Structures&\\
+\hspace*{1em}\textit{Supervisors}: Dr. G.D. Weymouth, Prof. O.R. Tutty, Dr. V.-T. Nguyen&\\
+\hspace*{1em}\textit{Visiting Researcher}: IHPC, A*STAR, Singapore. Research attachment funded by the ARAP mobility
+program & 2018-2020
+\end{tabular}
+
+\begin{tabular}{@{}p{0.85\linewidth}p{0.15\linewidth}}
+\textbf{Master of Science}, Cranfield University & 2014-2015\\ 
+\hspace*{1em}M.Sc. in Computational Fluid Dynamics, 86/100 &\\
+\hspace*{1em}\textit{Thesis}: High-order Shock-capturing Schemes for Micro Shock Tubes&\\
+\hspace*{1em}\textit{Supervisor}: Dr. L. K\"{o}n\"{o}zsy&\\
+\hspace*{1em}One year Degree program coursed as a Double Degree with the Ingenier\'{i}a Superior in
+Aeronautical Engineering
+\end{tabular}
+
+\begin{tabular}{@{}p{0.85\linewidth}p{0.15\linewidth}}
+\textbf{Ingenier\'{i}a Superior}, Universitat Polit\`{e}cnica de Catalunya & 2012-2015\\ 
+\hspace*{1em}Ingenier\'{i}a Superior in Aeronautical Engineering, 70/100 &\\
+\hspace*{1em}\textit{Mentor}: Prof. C.-D. P\'{e}rez-Segarra&\\
+\hspace*{1em}Two years Degree program equivalent to Master of Engineering
+\end{tabular}
+
+\begin{tabular}{@{}p{0.85\linewidth}p{0.15\linewidth}}
+\textbf{Ingenier\'{i}a T\'{e}cnica}, Universitat Polit\`{e}cnica de Catalunya & 2009-2012\\ 
+\hspace*{1em}Ingenier\'{i}a T\'{e}cnica in Aeronautical Engineering, 77/100 &\\
+\hspace*{1em}Three years Degree program equivalent to Bachelor of Engineering
+\end{tabular}
+
+\section{\sc Conference papers}
+\textbf{Font Garcia, B.}, Weymouth, G.D. \& Tutty, O.R. 2017 Analysis of two-dimensional and three-dimensional wakes of long circular cylinders. {\em OCEANS'17 MTS/IEEE}, UK. \href{https://doi.org/10.1109/OCEANSE.2017.8084904}{\texttt{doi.org/10.1109/OCEANSE.2017.8084904}}\\
+
+%\section{\sc Publications}
+%None yet
+
+\section{\sc Conference and Seminar Talks}
+\emph{Analysis of two-dimensional and three-dimensional 
+wakes of long circular cylinders}, OCEANS'17 MTS/IEEE Conference. (June 2017, UK)
+
+\emph{On two-dimensional and three-dimensional turbulence of wake flows}, Fluid Structure Interactions Group seminar series, University of Southampton. (May 2017, UK)
+
+\emph{A two-dimensional model for three-dimensional symmetric flows}, UK Fluids Conference. (September 2016, UK)
+
+\section{\sc Teaching experience}
+\begin{tabular}{@{}p{0.85\linewidth}p{0.15\linewidth}}
+\textbf{Demonstrator}, University of Southampton & 2015-2017\\ 
+\hspace*{1em}Aerodynamics module: Nozzle lab &\\
+\hspace*{1em}Propulsion module: Ramjet, turbojet and rocket engine labs &\\
+\hspace*{1em}Aerothermodynamics module: Marking of lab reports &
+\end{tabular}
+
+\begin{tabular}{@{}p{0.85\linewidth}p{0.15\linewidth}}
+\textbf{Private tutor} & 2011-2014\\ 
+\hspace*{1em}Teaching mathematics, physics and programming to High School and 1st year Undergraduate students&
+\end{tabular}
+
+\section{\sc Funded \\ Research}
+University of Southampton FEE Education Hub PhD grant (2015), GBP 28,353\\
+A*STAR ARAP Research Mobility Programme grant (2015), SGD 74,500
+
+\section{\sc Relevant \\ Skills}
+\begin{tabular}{@{}p{0.16\linewidth}p{0.81\linewidth}}
+Languages:& English, Catalan, Spanish\\
+Programming:& Fortran, Python, \CC, Android (Java), MPI, \LaTeX, Matlab, git\\
+Others:& Experienced in Linux systems \\
+& Experienced in CFD-related commerical software: ANSYS Fluent, ICEM CFD, Paraview,
+Tecplot \\
+Personal projects:& \textit{HowAbout}: Android platform to connect people willing to share similar hobbies\\
+                  & \textit{NuatsBot}: Cryptocurrency signals bot based on technical analysis indicators\\
+\end{tabular}
+
+\section{\sc References}
+{\bf Gabriel D. Weymouth}, Associate Professor, Fluid and Structure Interactions Group, University of Southampton, \href{mailto:g.d.weymouth@soton.ac.uk}{\texttt{g.d.weymouth@soton.ac.uk}}
+
+{\bf Owen R. Tutty}, Professor, Aerodynamics and Flight Mechanics Group, University of Southampton, \href{mailto:o.r.tutty@soton.ac.uk}{\texttt{o.r.tutty@soton.ac.uk}}
+
+{\bf L\'{a}szl\'{o} K\"{o}n\"{o}zsy}, Lecturer, Centre for Computational Engineering Sciences, Cranfield University, \href{mailto:laszlo.konozsy@cranfield.ac.uk}{\texttt{laszlo.konozsy@cranfield.ac.uk}}
+
+{\bf Carles-David P\'{e}rez-Segarra}, Professor, Heat and Mass Transfer Technological Center, Universitat Polit\`{e}cnica de Catalunya, \href{mailto:segarra@cttc-upc.net}{\texttt{segarra@cttc-upc.net}}
+\end{resume}
+\end{document}
