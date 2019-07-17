@@ -1,6 +1,5 @@
-#### Bernat Font Garcia, 
+#### Bernat Font Garcia 
 
 Curriculum Vitae
 
-
-My CV created with TeX. Use `make` to compile it.
+My CV created with TeX. Download the `cv.pdf` file or use `make` to compile it.

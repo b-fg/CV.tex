@@ -238,7 +238,7 @@
 \def\@linename{\begingroup
   \def\\{, }
   {\namefont\@name}
-  \vskip 2pt
+  \vskip 7pt
   \fullline
   \vskip 2pt
   % where do you live?
