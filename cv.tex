@@ -6,7 +6,8 @@
 \usepackage{romannum}
 \usepackage{fancyhdr}
 \usepackage{etaremune}
-\renewcommand{\labelenumi}{[\theenumi]} 
+\usepackage{refcount}
+% \renewcommand{\labelenumi}{[\theenumi]} % etarenum from 1. to [1]
 \usepackage[left=0.75in, right=1.25in,top=0.75in,bottom=0.75in]{geometry}
 \usepackage{array}
 \usepackage{hyperref}
@@ -61,23 +62,23 @@
 \hfill
 
 \noindent
+\vspace{-25pt}
 
 \section{Research interests}
 \begin{p}
-Computational fluid dynamics, turbulence modelling, numerical methods, deep learning \& data-driven models, high-performance computing. 
+Computational fluid dynamics, turbulence modelling, deep learning \& data-driven models, numerical methods, high-performance computing. 
 \end{p}
  
 \section{Experience}
 \begin{p1}
 \begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
 \textbf{Postdoctoral Researcher}, Large-scale Computational Fluid Dynamics Group, Barcelona Supercomputing Center, Spain. & 2021-\\
-\textit{Topic}: NextSim EU project - Next generation of industrial aerodynamic simulation code. & \\
+\textit{Topic}: NextSim EU project -- Next generation of industrial aerodynamic simulation code. & \\
 \\
 \textbf{Postdoctoral Researcher}, Mathematical Institute, Oxford University, UK.& 2020-2021 \\
 \textit{Topic}: Transport of porous particles in fluid flow. & \\
 \\
-\textbf{Visiting Researcher}, Institute of High-Performance Computing, A*STAR, Singapore. & 2017-2020\\
-\textbf{Doctoral Researcher}, University of Southampton, UK. & 2015-2020
+\textbf{Visiting PhD Researcher}, Institute of High-Performance Computing, A*STAR, Singapore. & 2017-2020\\
 \end{tabular}
 \end{p1}
 
@@ -85,12 +86,12 @@ Computational fluid dynamics, turbulence modelling, numerical methods, deep lear
 \begin{p3}
 \begin{tabular}{p{\dimexpr 0.87\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.13\linewidth-\tabcolsep}}
 \textbf{Ph.D.} Computational Fluid Dynamics, University of Southampton, UK. &  2015-2020\\
-\textit{Thesis}: Modelling of Flow Past Long Cylindrical Structures. \href{https://b-fg.github.io/assets/pdf/Font_2020_PhD_-_Modelling_of_Flow_Past_Long_Cylindrical_Structures.pdf}{\texttt{[Download]}} & \\
-\textit{Supervisors}: A. Prof. G.D. Weymouth, Prof. O.R. Tutty, Dr. V.-T. Nguyen. & \\
+\textit{Thesis}: Modelling of Flow Past Long Cylindrical Structures. (\href{https://b-fg.github.io/assets/pdf/Font_2020_PhD_-_Modelling_of_Flow_Past_Long_Cylindrical_Structures.pdf}{\texttt{download}}) & \\
+\textit{Supervisors}: Prof. G.D. Weymouth, Prof. O.R. Tutty, Dr. V.-T. Nguyen. & \\
 \textit{Visiting Researcher}: Research attachment funded by the ARAP mobility scheme, Institute of High-Performance Computing, A*STAR, Singapore. &  \\
 \\
 \textbf{M.Sc.} Computational Fluid Dynamics, Cranfield University, UK. &  2014-2015\\ 
-\textit{Thesis}: High-order Shock-capturing Schemes for Micro Shock Tubes. \href{https://b-fg.github.io/assets/pdf/Font_2015_MSc_-_High-order_Shock-capturing_Schemes_for_Micro_Shock_Tubes.pdf}{\texttt{[Download]}}& \\
+\textit{Thesis}: High-order Shock-capturing Schemes for Micro Shock Tubes. (\href{https://b-fg.github.io/assets/pdf/Font_2015_MSc_-_High-order_Shock-capturing_Schemes_for_Micro_Shock_Tubes.pdf}{\texttt{download}})& \\
 \textit{Supervisor}: Dr. L. K\"{o}n\"{o}zsy. & \\
 \textit{Double Degree with Ingenier\'{i}a Superior in Aeronautical Engineering}. & \\
 \\
@@ -108,99 +109,96 @@ Computational fluid dynamics, turbulence modelling, numerical methods, deep lear
 \hspace{-1cm}\textbf{Peer-reviewed journal articles}\vspace{0.25cm}
 \begin{p}
 \begin{etaremune}[leftmargin=-2pt,parsep=5pt]
-\item Font, B., Weymouth, G.D., Nguyen, V.-T. \& Tutty, O.R. 2021 Deep-learning of the spanwise-averaged Navier--Stokes equations. \textit{Journal of Computational Physics} 434, 110199. \href{https://doi.org/10.1016/j.jcp.2021.110199}{\texttt{[DOI]}} \href{https://arxiv.org/abs/2008.07528}{\texttt{[arXiv]}}
-\item Font, B., Weymouth, G.D., Nguyen, V.-T. \& Tutty, O.R. 2019 Span effect on the turbulence nature of flow past a circular cylinder. \textit{Journal of Fluid Mechanics} 878, 306--323. \href{https://doi.org/10.1017/jfm.2019.637}{\texttt{[DOI]}} \href{https://arxiv.org/abs/2008.08933}{\texttt{[arXiv]}}
+\item Varela, P., Suárez, P., Alcántara-Ávila, F., Miró, A., Rabault, J., Font, B., García-Cuevas, L.M., Lehmkuhl, O., Vinuesa, R (2022) Deep reinforcement learning for flow control exploits different physics for increasing Reynolds number regimes. \textit{Actuators} 11, 359. (\href{https://doi.org/10.3390/act11120359}{\texttt{doi}})
+\item Font, B., Weymouth, G.D., Nguyen, V.-T. \& Tutty, O.R. (2021) Deep-learning of the spanwise-averaged Navier--Stokes equations. \textit{Journal of Computational Physics} 434, 110199. (\href{https://doi.org/10.1016/j.jcp.2021.110199}{\texttt{doi}} | \href{https://arxiv.org/abs/2008.07528}{\texttt{preprint}})
+\item Font, B., Weymouth, G.D., Nguyen, V.-T. \& Tutty, O.R. (2019) Span effect on the turbulence nature of flow past a circular cylinder. \textit{Journal of Fluid Mechanics} 878, 306--323. (\href{https://doi.org/10.1017/jfm.2019.637}{\texttt{doi}} | \href{https://arxiv.org/abs/2008.08933}{\texttt{preprint}})
 \end{etaremune}
 \end{p}
 
 \hspace{-1cm}\textbf{Peer-reviewed symposium proceedings}\vspace{0.25cm}
 \begin{p}
 \begin{etaremune}[leftmargin=-2pt,parsep=5pt]
-\item Font, B., Weymouth, G.D., Nguyen, V.-T. \& Tutty, O.R. 2020 Turbulent wake prediction using deep convolutional neural networks \textit{33rd Symposium on Naval Hydrodynamics}, Osaka, Japan. \href{https://eprints.soton.ac.uk/444591/}{\texttt{[URL]}}
+\item Radhakrishnan, S., Gyamfi, L.A., Mir\'{o}, A., Font, B., Calafell, J., Lehmkuhl, O. \& Tutty, O.R. (2021) A data-driven wall-shear stress model for LES using gradient boosted decision trees \textit{ISC High Performance 2021} pp. 105--121. (\href{https://doi.org/10.1007/978-3-030-90539-2_7}{\texttt{doi}} | \href{https://upcommons.upc.edu/bitstream/handle/2117/358666/Manuscript_isc2021.pdf?sequence=3}{\texttt{preprint}})
+\item Font, B., Weymouth, G.D., Nguyen, V.-T. \& Tutty, O.R. (2020) Turbulent wake prediction using deep convolutional neural networks \textit{33rd Symposium on Naval Hydrodynamics}, Osaka, Japan. (\href{https://eprints.soton.ac.uk/444591/}{\texttt{doi}})
 \end{etaremune}
 \end{p}
 
 \hspace{-1cm}\textbf{Conference proceedings}\vspace{0.25cm}
 \begin{p}
 \begin{etaremune}[leftmargin=-2pt,parsep=5pt]
-\item Font, B., Weymouth, G.D.  \&  Tutty, O.R. 2017 Analysis of two-dimensional and three-dimensional wakes of long circular cylinders. {\em OCEANS MTS/IEEE}, Aberdeen, UK. \href{https://doi.org/10.1109/OCEANSE.2017.8084904}{\texttt{[DOI]}}
+\item Font, B., Weymouth, G.D.  \&  Tutty, O.R. (2017) Analysis of two-dimensional and three-dimensional wakes of long circular cylinders. {\em OCEANS MTS/IEEE}, Aberdeen, UK. (\href{https://doi.org/10.1109/OCEANSE.2017.8084904}{\texttt{doi}})
 \end{etaremune}
 \end{p}
 
 \hspace{-1cm}\textbf{Published abstracts}\vspace{0.25cm}
 \begin{p}
-\begin{etaremune}[leftmargin=-2pt,parsep=5pt]
-\item Font, B., Weymouth, G.D.  \&  Tutty, O.R. 2019  Deep learning the spanwise-averaged wake of a circular cylinder. \textit{72nd Meeting of the APS Division of Fluid Dynamics}, Seattle, US. \href{https://meetings.aps.org/Meeting/DFD19/Session/L17.5}{\texttt{[Abstract]}} \href{https://github.com/b-fg/APS2019}{\texttt{[Presentation]}}
-\item Font, B., Castells, I., Weymouth, G.D., Nguyen, V.-T.  \&  Tutty, O.R. 2019  Turbulence dynamics transition of flow past a circular cylinder and the prediction of vortex-induced forces. \textit{European Turbulence Conference 17}, Torino, Italy. \href{https://etc17.fyper.com/program/show_slot/41}{\texttt{[Abstract]}}
-\item Font, B., Weymouth, G.D.  \&  Tutty, O.R. 2016  A two-dimensional model for three-dimensional symmetric flows. \textit{UK Fluids Conference}, London, UK. \href{https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/aeronautics/UK-Fluids-Conference-2016-booklet.pdf}{\texttt{[Abstract]}}
+\begin{etaremune}[leftmargin=0pt,parsep=5pt]
+\item Font, B., Weymouth, G.D.  \&  Tutty, O.R. (2019)  Deep learning the spanwise-averaged wake of a circular cylinder. \textit{72nd Meeting of the APS Division of Fluid Dynamics}, Seattle, US. (\href{https://meetings.aps.org/Meeting/DFD19/Session/L17.5}{\texttt{url}} | \href{https://github.com/b-fg/APS2019}{\texttt{presentation}})
+\item Font, B., Castells, I., Weymouth, G.D., Nguyen, V.-T.  \&  Tutty, O.R. (2019)  Turbulence dynamics transition of flow past a circular cylinder and the prediction of vortex-induced forces. \textit{European Turbulence Conference 17}, Torino, Italy. (\href{https://etc17.fyper.com/program/show_slot/41}{\texttt{url}})
+\item Font, B., Weymouth, G.D.  \&  Tutty, O.R. (2016)  A two-dimensional model for three-dimensional symmetric flows. \textit{UK Fluids Conference}, London, UK. (\href{https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/aeronautics/UK-Fluids-Conference-2016-booklet.pdf}{\texttt{url}})
 \end{etaremune}
 \end{p}
 
 \section{Invited Talks}\vspace{0.5cm}
 \begin{p}
-2021 June, Engineering Mind Podcast. \newline
-2021 April, Applied Mathematics in Aerospace Engineering seminar, Universidad Politecnica de Madrid, Spain. \newline
-2021 March, Applied Math Colloquium, University North Carolina, US. \newline
-2021 February, Ocean Engineering, University Rhode Island, US. \newline
-2020 November, Fluid Dynamics Group at the Institute of High Performance Computing (A*STAR), Singapore. \newline
-2020 July, Fluid Structure Interactions Group Seminar series, University of Southampton, UK. \newline
-2017 May, Fluid Structure Interactions Group Seminar series, University of Southampton, UK.
+PPPL Computer Science Department's Machine Learning seminar, Princeton University, September 2021.\\
+Engineering Mind Podcast: CFD + Machine Learning, Turbulence \& PhD Life, June 2021. (\href{https://youtu.be/d1O3dFgvAP4}{\texttt{url}})\\
+Applied Mathematics in Aerospace Engineering seminar, Universidad Politecnica de Madrid, Spain, April 2021.\\
+Applied Math Colloquium, University North Carolina, US, March 2021.\\
+Ocean Engineering, University Rhode Island, US, February 2021.\\
+Fluid Dynamics Group Institute of High Performance Computing (A*STAR), Singapore, November 2020.\\
+Fluid Structure Interactions Group seminar series, University of Southampton, UK, July 2020.
 \end{p}
-
-\section{Funded Research}\vspace{0.5cm}
-\begin{p3}
-\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
-University of Southampton FEE Education Hub PhD grant (2015). & GBP 28,353\\
-A*STAR ARAP Research Mobility Programme grant (2015). & SGD 74,500
-\end{tabular}
-\end{p3}
 
 \section{Teaching and supervision}\vspace{0.5cm}
 \begin{p1}
 \begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
-Supervisor of MSc projects, University of Southampton. & 2019-\\ 
-\textnormal{ Machine Learning Wall Model for Bluff Bodies Forces
-Calculation.} &\\
-\textnormal{ Accurate Flow Interpolation using Optimal Transport Theory.} &\\
+Supervisor of PhD students, \textit{TU Delft} & 2023- \\
+- Physics-based machine learning of marine hydrodynamics &\\
 \\
-Demonstrator, University of Southampton. & 2015-2017\\ 
-\textnormal{ Aerodynamics:} Nozzle lab. &\\
-\textnormal{ Propulsion}: Ramjet, turbojet and rocket engine labs. &\\
-\textnormal{ Aerothermodynamics}: Marking of lab reports. & \\
+Lecturer at the PUMPS+AI Summer School, \textit{Barcelona Supercomputing Center} & 2022\\
+- Machine learning for computational fluid dynamics (\href{https://pumps.bsc.es/2022/}{\texttt{url}})\\
 \\
-Private tutor. & 2011-2014\\ 
-\textnormal{ Mathematics, physics and programming tutor to High School and Undergraduate students.}&
+Supervisor of undergrad projects, \textit{Universitat Polit\`{e}cnica de Catalunya} & 2021- \\
+- Discovering new scaling laws in turbulent boundary layers via multi-expression programming. (\href{http://hdl.handle.net/2117/372288}{\texttt{url}}) &\\
+- Discovering new expressions for the vortex trajectories and velocity profiles of synthetic jets. (\href{http://hdl.handle.net/2117/365135}{\texttt{url}}) &\\
+\\
+Supervisor of MSc projects, \textit{University of Southampton} & 2019-2020 \\ 
+- Machine learning wall model for bluff bodies forces calculation. &\\
+- Accurate flow interpolation using optimal transport theory. &\\
+\\
+Demonstrator, \textit{University of Southampton} & 2015-2017 \\ 
+- Aerodynamics: Nozzle lab. &\\
+- Propulsion: Ramjet, turbojet and rocket engine labs. &\\
+- Aerothermodynamics: Marking of lab reports. &
 \end{tabular}
 \end{p1}
 
 \section{Software skills}\vspace{0.5cm}
 \begin{p}\setlength{\parskip}{3pt}
-\textbf{Programming languages}: Fortran (including MPI), Python (including Keras and Tensorflow), C, Java, Matlab.
-
-\textbf{Tools}: Git, \LaTeX, Inkscape.
-
-\textbf{Others}: MySQL, HTML, Qt.
+\textbf{Programming languages}: Fortran (including MPI), Julia, Python (including PyTorch, Keras, and Tensorflow), C, Java, Matlab. \\
+\textbf{Tools}: Git, \LaTeX, Inkscape, Paraview.
 \end{p}
 
 \section{References}\vspace{0.2cm}
 \begin{p1}\setlength{\parskip}{1em}
-Gabriel D. Weymouth, Associate Professor, Fluid and Structure Interactions Group.\newline
-University of Southampton, UK.\newline
-\href{mailto:g.d.weymouth@soton.ac.uk}{\texttt{g.d.weymouth@soton.ac.uk}}
+Gabriel D. Weymouth, Professor of Ship Hydromechanics.\newline
+TU Delft, Netherlands.\newline
+\href{mailto:g.d.weymouth@tudelft.nl}{\texttt{g.d.weymouth@tudelft.nl}}
 
-Carles-David P\'{e}rez-Segarra, Professor, Heat and Mass Transfer Technological Center.\newline
+Carles-David P\'{e}rez-Segarra, Professor at the Heat and Mass Transfer Technological Center.\newline
 Universitat Polit\`{e}cnica de Catalunya, Spain.\newline
 \href{mailto:segarra@cttc-upc.net}{\texttt{segarra@cttc-upc.net}}
 
-Vinh-Tan Nguyen, Senior Scientist, Institute of High Performance Computing.\newline
+Vinh-Tan Nguyen, Senior Scientist at the Institute of High Performance Computing.\newline
 A*STAR, Singapore.\newline
 \href{mailto:nguyenvt@ihpc.a-star.edu.sg}{\texttt{nguyenvt@ihpc.a-star.edu.sg}}
 
-F. Xavier Trias, Associate Professor, Heat and Mass Transfer Technological Center.\newline
+F. Xavier Trias, Associate Professor at the Heat and Mass Transfer Technological Center.\newline
 Universitat Polit\`{e}cnica de Catalunya, Spain.\newline
 \href{mailto:xavi@cttc.upc.edu}{\texttt{xavi@cttc.upc.edu}}
 
-Owen R. Tutty, Professor, Aerodynamics and Flight Mechanics Group.\newline
+Owen R. Tutty, Professor at the Aerodynamics and Flight Mechanics Group.\newline
 University of Southampton, UK.\newline
 \href{mailto:o.r.tutty@soton.ac.uk}{\texttt{o.r.tutty@soton.ac.uk}}
 \end{p1}
