@@ -11,21 +11,23 @@
 \usepackage[left=0.75in, right=1.25in,top=0.75in,bottom=0.75in]{geometry}
 \usepackage{array}
 \usepackage{hyperref}
+\usepackage{amssymb}
 \hypersetup{
-	unicode=true, 
+	unicode=true,
 	pdftitle={CV Bernat Font},
 	pdfauthor={Bernat Font},
-	pdfnewwindow=true, 
+	pdfnewwindow=true,
 	colorlinks=true, 	% (false,true)
-	pdfborder={0 0 0},	
+	pdfborder={0 0 0},
 	linkcolor=blue,
-	linktoc=all, 		% (none,all) 
+	linktoc=all, 		% (none,all)
 	citecolor=blue,
 	urlcolor=blue,
 	breaklinks=false,
 }
 \usepackage{fancyhdr}
 \usepackage{changepage}
+\usepackage{longtable}
 
 \pagestyle{empty}  % No page numbers/headers/footers
 
@@ -50,7 +52,11 @@
   {\begin{adjustwidth}{-16pt}{0pt}
   \vspace{3pt}}
   {\end{adjustwidth}}
-  
+
+\renewcommand{\labelitemi}{$\square$}
+\newcommand{\tabitem}{~~\llap{$\square$}~~}
+\renewcommand{\arraystretch}{1.25}
+
 \begin{document}
 \pagenumbering{arabic}
 
@@ -59,55 +65,83 @@
 \begin{resume}
 \section{}
 \vspace{-15pt}
-\hspace*{-36pt}{\href{mailto:bernat.font@bsc.es}{\texttt{bernat.font@bsc.es}}\hfill\href{https://b-fg.github.io}{\texttt{b-fg.github.io}}}\\
+\hspace*{-36pt}{\href{mailto:b.font@tudelft.nl}{\texttt{b.font@tudelft.nl}}\hfill\href{https://b-fg.github.io}{\texttt{b-fg.github.io}}}\\
 \hspace*{0pt}\hfill\,\,\href{https://github.com/b-fg}{\texttt{github.com/b-fg}}\\
 \vspace{-25pt}
 \noindent
 
 \section{Research interests}
 \begin{p}
-Computational fluid dynamics, turbulence modelling, deep learning \& data-driven models, numerical methods, high-performance computing. 
+computational fluid dynamics; turbulence modelling; machine learning and data-driven models; numerical methods; high-performance computing.
 \end{p}
- 
+
 \section{Experience}
 \begin{p1}
 \begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
-\textbf{Postdoctoral Researcher}, Large-scale Computational Fluid Dynamics Group, Barcelona Supercomputing Center, Spain. & 2021-\\
-\textit{Topics}:\\
- - NextSim EU project -- Next generation of industrial aerodynamic simulation code. & \\
- - Machine learning wall models for non-equilibrium boundary layers & \\
- - Deep reinforcement learning for active flow control & \\
- - Turbulence modelling in high-order scale-resolving simulations & \\
-\\
-\textbf{Postdoctoral Researcher}, Mathematical Institute, Oxford University, UK.& 2020-2021 \\
+\textbf{Assistant Professor}, Ship hydromechanics, Technische Universiteit Delft, The Netherlands. & 2024--\\
+\textit{Focus}: Data exploitation to improve current CFD methodologies, i.e. data-informed CFD. Current projects involve:
+\begin{itemize}
+	\item Acceleration of scale-resolving simulations using generative methods
+	\item Data-driven wall models for equilibrium and non-equilibrium boundary layers
+	\item Active flow control using reinforcement learning
+	\item Discovery of governing equations from raw data
+	\item Pressure solver acceleration in unstructured grids
+\end{itemize}
+\end{tabular}
+
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+\textbf{Postdoctoral Researcher}, Large-scale Computational Fluid Dynamics Group, Barcelona Supercomputing Center, Spain. & 2021--2023 \\
+\textit{Topics}:
+\begin{itemize}
+	\item NextSim EU project -- Next generation of industrial aerodynamic simulation code
+	\item Machine learning for CFD: wall models and active flow control
+	\item Turbulence modelling in high-order scale-resolving simulations
+\end{itemize}
+\end{tabular}
+
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+\textbf{Postdoctoral Researcher}, Mathematical Institute, Oxford University, UK.& 2020--2021 \\
 \textit{Topic}: Transport of porous particles in fluid flow. & \\
-\\
-\textbf{Visiting PhD Researcher}, Institute of High-Performance Computing, A*STAR, Singapore. & 2017-2020\\
+\end{tabular}
+
+\vspace{8pt}
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+\textbf{Visiting PhD Researcher}, Institute of High-Performance Computing, A*STAR, Singapore. & 2017--2020 \\
 \end{tabular}
 \end{p1}
 
 \section{Education}
-\begin{p3}
-\begin{tabular}{p{\dimexpr 0.87\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.13\linewidth-\tabcolsep}}
-\textbf{Ph.D.} Computational Fluid Dynamics, University of Southampton, UK. &  2015-2020\\
+\begin{p}
+\vspace{10pt}
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+\textbf{Ph.D.} Computational Fluid Dynamics, University of Southampton, UK. &  2015--2020 \\
 \textit{Thesis}: Modelling of Flow Past Long Cylindrical Structures. (\href{https://b-fg.github.io/assets/pdf/Font_2020_PhD_-_Modelling_of_Flow_Past_Long_Cylindrical_Structures.pdf}{\texttt{download}}) & \\
 \textit{Supervisors}: Prof. G.D. Weymouth, Prof. O.R. Tutty, Dr. V.-T. Nguyen. & \\
-\textit{Visiting Researcher}: Research attachment funded by the ARAP mobility scheme, Institute of High-Performance Computing, A*STAR, Singapore. &  \\
-\\
-\textbf{M.Sc.} Computational Fluid Dynamics, Cranfield University, UK. &  2014-2015\\ 
+\textit{Visiting Researcher}: Research attachment funded by the ARAP mobility scheme, Institute of High-Performance Computing, A*STAR, Singapore. & \\
+\end{tabular}
+
+\vspace{10pt}
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+\textbf{M.Sc.} Computational Fluid Dynamics, Cranfield University, UK. &  2014--2015\\
 \textit{Thesis}: High-order Shock-capturing Schemes for Micro Shock Tubes. (\href{https://b-fg.github.io/assets/pdf/Font_2015_MSc_-_High-order_Shock-capturing_Schemes_for_Micro_Shock_Tubes.pdf}{\texttt{download}})& \\
 \textit{Supervisor}: Dr. L. K\"{o}n\"{o}zsy. & \\
 \textit{Double Degree with Ingenier\'{i}a Superior in Aeronautical Engineering}. & \\
-\\
-\textbf{Ingenier\'{i}a Superior} Aeronautical Engineering, Universitat Polit\`{e}cnica de Catalunya, Spain. &  2012-2015\\ 
+\end{tabular} \\
+
+\vspace{10pt}
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+\textbf{Ingenier\'{i}a Superior} Aeronautical Engineering, Universitat Polit\`{e}cnica de Catalunya, Spain. &  2012--2015 \\
 \textit{Mentor}: Prof. C.-D. P\'{e}rez-Segarra. & \\
 \textit{Equivalent to Master of Engineering}. & \\
-\\
-\textbf{Ingenier\'{i}a T\'{e}cnica} Aeronautical Engineering, Universitat Polit\`{e}cnica de Catalunya, Spain.&  2009-2012\\ 
-\textit{Equivalent to Bachelor of Engineering}. & 
+\end{tabular} \\
+
+\vspace{10pt}
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+\textbf{Ingenier\'{i}a T\'{e}cnica} Aeronautical Engineering, Universitat Polit\`{e}cnica de Catalunya, Spain.&  2009--2012 \\
+\textit{Equivalent to Bachelor of Engineering}. &
 \end{tabular}
-\end{p3}
- 
+\end{p}
+
 \section{Publications}
 \vspace{0.25cm}
 \hspace{-1cm}\textbf{Peer-reviewed journal articles}\vspace{0.25cm}
@@ -118,8 +152,6 @@ Computational fluid dynamics, turbulence modelling, deep learning \& data-driven
 \item Font, B., Weymouth, G.D., Nguyen, V.-T. \& Tutty, O.R. (2019) Span effect on the turbulence nature of flow past a circular cylinder. \textit{Journal of Fluid Mechanics} 878, 306--323. (\href{https://doi.org/10.1017/jfm.2019.637}{\texttt{doi}} | \href{https://arxiv.org/abs/2008.08933}{\texttt{preprint}})
 \end{etaremune}
 \end{p}
-
-\newpage
 
 \hspace{-1cm}\textbf{Peer-reviewed symposium proceedings}\vspace{0.25cm}
 \begin{p}
@@ -148,33 +180,44 @@ Computational fluid dynamics, turbulence modelling, deep learning \& data-driven
 \end{etaremune}
 \end{p}
 
+\newpage
+
 \section{Invited Talks}\vspace{0.5cm}
-\begin{p}
-PPPL Computer Science Department's Machine Learning seminar, Princeton University, September 2021.\\
-Engineering Mind Podcast: CFD + Machine Learning, Turbulence \& PhD Life, June 2021. (\href{https://youtu.be/d1O3dFgvAP4}{\texttt{url}})\\
-Applied Mathematics in Aerospace Engineering seminar, Universidad Politecnica de Madrid, Spain, April 2021.\\
-Applied Math Colloquium, University North Carolina, US, March 2021.\\
-Ocean Engineering, University Rhode Island, US, February 2021.\\
-Fluid Dynamics Group Institute of High Performance Computing (A*STAR), Singapore, November 2020.\\
-Fluid Structure Interactions Group seminar series, University of Southampton, UK, July 2020.
-\end{p}
+\begin{p1}
+	\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+		\tabitem PPPL Computer Science Department's Machine Learning seminar, Princeton University & 2021 \\
+		\tabitem Engineering Mind Podcast: CFD + Machine Learning, Turbulence \& PhD Life (\href{https://youtu.be/d1O3dFgvAP4}{\texttt{url}}) & 2021 \\
+		\tabitem Applied Mathematics in Aerospace Engineering seminar, Universidad Politecnica Madrid & 2021 \\
+		\tabitem Applied Math Colloquium, University North Carolina & 2021 \\
+		\tabitem Ocean Engineering, University Rhode Island & 2021 \\
+		\tabitem Fluid Dynamics Group Institute of High Performance Computing (A*STAR) & 2020 \\
+		\tabitem Fluid Structure Interactions Group seminar series, University of Southampton & 2020 \\
+	\end{tabular}
+\end{p1}
 
 \section{Student supervision}\vspace{0.5cm}
 \begin{p}
 Mentored and supervised students at different stages of their educational program such as Undergraduate students, MSc students, and most recently a PhD student.
 As a mentor, the goal is to motivate students to pursue an interesting scientific topic while providing guidance throughout the process of learning and achieving.
-The supervision involves regular meetings to assess their progress, and answering technical questions when needed.
+The supervision involves regular meetings to assess their progress, and answering technical questions when needed.\\
+
+\vspace{-2pt}
+\textbf{PhD students} \\
 \begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
-Supervisor of PhD students, \textit{TU Delft} & 2023- \\
-- Physics-based machine learning of marine hydrodynamics &\\
-\\
-Supervisor of undergraduate projects, \textit{Universitat Polit\`{e}cnica de Catalunya} & 2021- \\
-- Discovering new scaling laws in turbulent boundary layers via multi-expression programming. (\href{http://hdl.handle.net/2117/372288}{\texttt{url}}) &\\
-- Discovering new expressions for the vortex trajectories and velocity profiles of synthetic jets. (\href{http://hdl.handle.net/2117/365135}{\texttt{url}}) &\\
-\\
-Supervisor of MSc projects, \textit{University of Southampton} & 2019-2020 \\ 
-- Machine learning wall model for bluff bodies forces calculation. &\\
-- Accurate flow interpolation using optimal transport theory. &\\
+\tabitem Physics-based machine learning of marine hydrodynamics, TU Delft & 2023--\\
+\end{tabular} \\
+
+\textbf{MSc projects} \\
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+	\tabitem Machine learning wall model for bluff bodies forces calculation & 2019 \\
+	\tabitem Accurate flow interpolation using optimal transport theory & 2018 \\
+\end{tabular} \\
+
+\vspace{2pt}
+\textbf{Undergraduate projects}\\
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+\tabitem Discovering new scaling laws in turbulent boundary layers via multi-expression programming, Universitat Polit\`{e}cnica de Catalunya (\href{http://hdl.handle.net/2117/372288}{\texttt{url}}) & 2021 \\
+\tabitem Discovering new expressions for the vortex trajectories and velocity profiles of synthetic jets, Universitat Polit\`{e}cnica de Catalunya (\href{http://hdl.handle.net/2117/365135}{\texttt{url}}) & 2021 \\
 \end{tabular}
 \end{p}
 
@@ -185,23 +228,42 @@ Tasks involved preparing and delivering the laboratory sessions which included a
 Additionally, served as lecturer of the BSC summer school on AI and HPC delivering a lecture on AI for CFD. \\
 \end{p}
 \begin{p1}
+\vspace{-5pt}
 \begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
-Lecturer at the PUMPS+AI Summer School, \textit{Barcelona Supercomputing Center} & 2022\\
-- Machine learning for computational fluid dynamics (\href{https://pumps.bsc.es/2022/}{\texttt{url}})\\
-\\
-Demonstrator, \textit{University of Southampton} & 2015-2017 \\ 
-- Aerodynamics: Nozzle lab. &\\
-- Propulsion: Ramjet, turbojet and rocket engine labs. &\\
-- Aerothermodynamics: Marking of lab reports. &
+Lecturer at the PUMPS+AI Summer School, Barcelona Supercomputing Center & 2022 \\
 \end{tabular}
+\begin{itemize}
+	\item Machine learning for computational fluid dynamics (\href{https://pumps.bsc.es/2022/}{\texttt{url}})
+\end{itemize}
+
+\vspace{4pt}
+\begin{tabular}{p{\dimexpr 0.85\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.15\linewidth-\tabcolsep}}
+	Demonstrator, University of Southampton & 2015--2017 \\
+\end{tabular}
+\begin{itemize}
+	\item Aerodynamics: Nozzle lab
+	\item Propulsion: Ramjet, turbojet and rocket engine labs
+	\item Aerothermodynamics: Marking of lab reports
+\end{itemize}
 \end{p1}
 
 \section{Software skills}\vspace{0.5cm}
 \begin{p}\setlength{\parskip}{3pt}
-\textbf{Programming languages}: Fortran (including MPI), Julia, Python (including PyTorch, Keras, and Tensorflow), C, Java, Matlab. \\
-\textbf{Tools}: Git, \LaTeX, Inkscape, Paraview.
-\end{p}
+\textbf{Programming languages}: Fortran (including MPI), Julia, Python (including PyTorch, Keras, and Tensorflow), C, Java, Matlab.
 
+\vspace{1pt}
+\textbf{Tools}: Git, \LaTeX, Inkscape, Paraview.
+
+\vspace{1pt}
+\textbf{Selection of popular repositories}:
+\begin{itemize}
+	\item \href{https://github.com/weymouth/WaterLily.jl}{\texttt{WaterLily.jl}} (co-developer): Fast CFD Julia solver based in the finite-volume and immersed boundary methods with backend-agnostic execution (CPU and GPU).
+	\item \href{https://github.com/b-fg/SANSpy}{\texttt{SANSpy}}: Spanwise-averaged Navier–Stokes modelling through convolutional neural networks.
+	\item \href{https://github.com/b-fg/f2py-sockets}{\texttt{f2py-sockets}}: Data transfer from Fortran to Python and viceversa using sockets.
+	\item \href{https://github.com/b-fg/Flower1D}{\texttt{Flower1D}}: Flux reconstruction fluid flow solver for 1D PDEs written in Julia.
+	\item \href{https://github.com/b-fg/nuatsbot}{\texttt{nuatsbot}}: Technical analysis trading bot.
+\end{itemize}
+\end{p}
 
 \section{Open science statement}\vspace{0.5cm}
 \begin{p}\setlength{\parskip}{3pt}
@@ -209,7 +271,6 @@ I advocate for open science.
 Most of my papers have an e-print version that can be downloaded for free either on arXiv or \href{https://b-fg.github.io/}{my website.}
 The codes I write are also open-source, and you can find them in my \href{https://github.com/b-fg}{Github repository}.
 \end{p}
-
 
 \section{References}\vspace{0.2cm}
 \begin{p1}\setlength{\parskip}{1em}
