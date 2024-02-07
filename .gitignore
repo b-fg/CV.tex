@@ -4,5 +4,6 @@
 *.out
 *~*
 build/*
+!build/cv.pdf
 cv.sublime-workspace
 cv.sublime-project
