@@ -1,5 +1,3 @@
-#### Bernat Font Garcia 
+# Curriculum Vitae
 
-Curriculum Vitae
-
-My CV created with TeX. Download the `cv.pdf` file or use `make` to compile it.
+My CV created with $\LaTeX$. Download the [CV](https://github.com/b-fg/CV.tex/blob/master/main.pdf) or run `make` to compile it.
