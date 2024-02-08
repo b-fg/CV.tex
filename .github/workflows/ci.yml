@@ -36,7 +36,6 @@ jobs:
     - name: Trigger workflow on b-fg.github.io
       uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
             owner: 'b-fg',
