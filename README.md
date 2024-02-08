@@ -1,3 +1,3 @@
 # Curriculum Vitae
 
-My CV created with $\LaTeX$. Download the [CV](https://github.com/b-fg/CV.tex/blob/master/main.pdf) or run `make` to compile it.
+My CV created with $\LaTeX$. Download the [CV](https://raw.githubusercontent.com/b-fg/CV.tex/master/main.pdf) or run `make` to compile it.
