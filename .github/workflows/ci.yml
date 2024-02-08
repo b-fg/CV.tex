@@ -35,6 +35,7 @@ jobs:
     steps:
     - name: Trigger workflow on b-fg.github.io
       uses: actions/github-script@v6
+      github-token: ${{ secrets.github_token }}
       with:
         script: |
           await github.rest.actions.createWorkflowDispatch({
