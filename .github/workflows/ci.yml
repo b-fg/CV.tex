@@ -33,8 +33,6 @@ jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-    - env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Trigger workflow on b-fg.github.io
       uses: actions/github-script@v6
       with:
