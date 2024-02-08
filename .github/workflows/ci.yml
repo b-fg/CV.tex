@@ -36,15 +36,17 @@ jobs:
           name: PDF
           path: main.pdf
 
-      - name: Send workflow trigger
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const result = await github.rest.actions.createWorkflowDispatch({
-              owner: 'b-fg',
-              repo: 'b-fg.github.io',
-              workflow_id: 'jekyll.yml',
-              ref: 'main'
-            })
-            console.log(result)
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Trigger workflow on b-fg.github.io
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.PAT_TOKEN }}
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+            owner: 'b-fg',
+            repo: 'b-fg.github.io',
+            workflow_id: 'jekyll.yml',
+            ref: 'main'
+          })
