@@ -39,7 +39,7 @@ jobs:
       - name: Send workflow trigger
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GHA_WORKFLOW_TRIGGER }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const result = await github.rest.actions.createWorkflowDispatch({
               owner: 'b-fg',
