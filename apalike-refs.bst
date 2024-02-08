@@ -1,33 +1,11 @@
-% based on apalike2-url-doi bibliograpy style described below
+% BibTeX `apalike' bibliography style (version 0.99a, 8-Dec-10), adapted from
+% the `alpha' style, version 0.99a; for BibTeX version 0.99a.
 %
-% Most recent modifications by Arkady Zgonnikov and Jonathan Baron, July 2019.
-% and Carlos Alós-Ferrer, 1/2021
-% handles "in press" dates and dois, but requires href package
+% Copyright (C) 1988, 2010 Oren Patashnik.
+% Unlimited copying and redistribution of this file are permitted as long as
+% it is unmodified.  Modifications (and redistribution of modified versions)
+% are also permitted, but only if the resulting file is renamed.
 %
-% BibTeX 'apalike2-url-doi' bibliography style (21-Nov-2010 version)
-% Modification of 'apalike2' style that corrects original 'apalike' e.g. by
-% using the ampersand sign between last two authors, Ed./Eds. abbrev. etc.
-%
-% This version is further modified by Martin Malec, a.k.a. Brozkeff, Nov.2010
-% by implementing support for URLs and DOIs from these extensions:
-% mod. URL http://www.astro.gla.ac.uk/users/norman/distrib/urlbst/
-% mod. doi http://www.nersc.no/~even/tex/apalike-doi.bst
-% Newly recognized fields are "url", "lastchecked", "doi" and "eid".
-% These were using the original apalike, so I extracted all the necessary rows
-% and slipstreamed them into this apalike2 style.
-%
-% Tested in LyX 1.6.7 with NatBib, using BibTeX and pipeline from JabRef
-% (Windows Vista, SP2 Czech Edition)
-% -- Martin Malec, brozkeff (at) gmail (dot) com
-% Czech article describing this style:
-% http://malec.borec.cz/weblog/?act=read&id=317
-%
-% BibTeX `apalike' bibliography style (24-Jan-88 version)
-% Adapted from the `alpha' style, version 0.99a; for BibTeX version 0.99a.
-% Copyright (C) 1988, all rights reserved.
-% Copying of this file is allowed, provided that if you make any changes at all
-% you name it something other than `apalike.bst'.
-% This restriction helps ensure that all copies are identical.
 % Differences between this style and `alpha' are generally heralded by a `%'.
 % The file btxbst.doc has the documentation for alpha.bst.
 %
@@ -53,13 +31,14 @@
 % numbers in both text references and list."  LaTeX sidesteps the disadvantage.
 %
 % History:
-%   15-sep-86	(SK,OP)	Original version, by Susan King and Oren Patashnik.
-%   10-nov-86	(OP)	Truncated the sort.key$ string to the correct length
-%			in bib.sort.order to eliminate error message.
-%   24-jan-88	(OP)	Updated for BibTeX version 0.99a, from alpha.bst 0.99a;
-%			apalike now sorts by author, then year, then title;
-%			THIS `apalike' VERSION DOES NOT WORK WITH BIBTEX 0.98i.
-% Local modifications 10/89 -- Brian Reiser
+%   15-sep-86  (OP)  Original version by Oren Patashnik, ideas from Susan King.
+%   10-nov-86  (OP)  Truncated the sort.key$ string to the correct length
+%                    in bib.sort.order to eliminate error message.
+%   24-jan-88  (OP)  Updated for BibTeX version 0.99a, from alpha.bst 0.99a;
+%                    apalike now sorts by author, then year, then title;
+%                    THIS `apalike' VERSION DOES NOT WORK WITH BIBTEX 0.98i.
+%    8-dec-10  (OP)  Still version 0.99a, as the code itself was unchanged;
+%                    this release clarified the license.
 
 ENTRY
   { address
@@ -72,7 +51,7 @@ ENTRY
     institution
     journal
     key
-%    month		not used in apalike
+%    month              not used in apalike
     note
     number
     organization
@@ -84,47 +63,17 @@ ENTRY
     type
     volume
     year
-    url % urlbst
-    lastchecked % urlbst
-    doi % doi
-    eprint % urlbst
+    doi
+    eprint
+    url
   }
   {}
   { label extra.label sort.label }
 
 INTEGERS { output.state before.all mid.sentence after.sentence after.block }
 
-STRINGS { urlintro eprinturl eprintprefix } % urlbst...
-INTEGERS { hrefform addeprints }
-% Following constants may be adjusted by hand, if desired
-FUNCTION {init.config.constants}
-{
-  "URL: " 'urlintro :=  % prefix before URL
-  "http://arxiv.org/abs/" 'eprinturl :=  % prefix to make URL from eprint ref
-  "arXiv:" 'eprintprefix := % text prefix printed before eprint ref
-  #0 'addeprints := % 0=no eprints; 1=include eprints
-  #0 'hrefform := % 0=no crossrefs; 1=hypertex xrefs; 2=hyperref refs
-}
-INTEGERS {
-  bracket.state
-  outside.brackets
-  open.brackets
-  within.brackets
-  close.brackets
-}
-% ...urlbst to here
-
-
-
 FUNCTION {init.state.consts}
-{ #0 'outside.brackets := % urlbst
-  #1 'open.brackets :=
-  #2 'within.brackets :=
-  #3 'close.brackets :=
-
-
-
-#0 'before.all :=
+{ #0 'before.all :=
   #1 'mid.sentence :=
   #2 'after.sentence :=
   #3 'after.block :=
@@ -132,129 +81,20 @@ FUNCTION {init.state.consts}
 
 STRINGS { s t }
 
-% urlbst
-FUNCTION {output.nonnull.original}
+FUNCTION {output.nonnull}
 { 's :=
   output.state mid.sentence =
     { ", " * write$ }
     { output.state after.block =
-	{ add.period$ write$
-	  newline$
-	  "\newblock " write$
-	}
-	{ output.state before.all =
-	    'write$
-	    { add.period$ " " * write$ }
-	  if$
-	}
-      if$
-      mid.sentence 'output.state :=
-    }
-  if$
-  s
-}
-
-% urlbst...
-FUNCTION {output.nonnull}
-{ % Save the thing we've been asked to output
-  's :=
-  % If the bracket-state is close.brackets, then add a close-bracket to
-  % what is currently at the top of the stack, and set bracket.state
-  % to outside.brackets
-  bracket.state close.brackets =
-    { "]" *
-      outside.brackets 'bracket.state :=
-    }
-    'skip$
-  if$
-  bracket.state outside.brackets =
-    { % We're outside all brackets -- this is the normal situation.
-      % Write out what's currently at the top of the stack, using the
-      % original output.nonnull function.
-      s
-      output.nonnull.original
-    }
-    { % Still in brackets.  Add open-bracket or (continuation) comma, add the
-      % new text (in s) to the top of the stack, and move to the close-brackets
-      % state, ready for next time (unless inbrackets resets it).  If we come
-      % into this branch, then output.state is carefully undisturbed.
-      bracket.state open.brackets =
-        { " [" * }
-        { ", " * } % bracket.state will be within.brackets
-      if$
-      s *
-      close.brackets 'bracket.state :=
-    }
-  if$
-}
-
-% Call this function just before adding something which should be presented in
-% brackets.  bracket.state is handled specially within output.nonnull.
-FUNCTION {inbrackets}
-{ bracket.state close.brackets =
-    { within.brackets 'bracket.state := } % reset the state: not open nor closed
-    { open.brackets 'bracket.state := }
-  if$
-}
-
-FUNCTION {format.lastchecked}
-{ lastchecked empty$
-    { "" }
-    { inbrackets "cit. " lastchecked * }
-  if$
-}
-% ...urlbst to here
-
-
-
-FUNCTION {eho.special.output.nonnull}
-{ 's :=
-  output.state mid.sentence =
-    { "  " * write$ }
-    { output.state after.block =
-	{ % add.period$ write$
-	  ": " write$
-	  newline$
-	  "\newblock " write$
-	}
-	{ output.state before.all =
-	    'write$
-	    { % add.period$ " " * write$
-	      ": " * write$
-            }
-	  if$
-	}
-      if$
-      mid.sentence 'output.state :=
-    }
-  if$
-  s
-}
-
-FUNCTION {eho.special.output}
-{ duplicate$ empty$
-    'pop$
-    'eho.special.output.nonnull
-  if$
-}
-
-%% Added by Eric Ho <eho@word> on Wed Jan 10 20:13:56 1990
-%% A special patch for output.nonnull in book environment.
-
-FUNCTION {eho.output.nonnull}
-{ 's :=
-  output.state mid.sentence =
-    { ": " * write$ }
-    { output.state after.block =
-	{ add.period$ write$
-	  newline$
-	  "\newblock " write$
-	}
-	{ output.state before.all =
-	    'write$
-	    { add.period$ " " * write$ }
-	  if$
-	}
+        { add.period$ write$
+          newline$
+          "\newblock " write$
+        }
+        { output.state before.all =
+            'write$
+            { add.period$ " " * write$ }
+          if$
+        }
       if$
       mid.sentence 'output.state :=
     }
@@ -269,16 +109,6 @@ FUNCTION {output}
   if$
 }
 
-%% Added by Eric Ho <eho@word> on Wed Jan 10 20:13:56 1990
-%% A special patch for output in book environment.
-
-FUNCTION {eho.output}
-{ duplicate$ empty$
-    'pop$
-    'eho.output.nonnull
-  if$
-}
-
 FUNCTION {output.check}
 { 't :=
   duplicate$ empty$
@@ -287,20 +117,9 @@ FUNCTION {output.check}
   if$
 }
 
-%% Added by Eric Ho <eho@word> on Wed Jan 10 20:13:56 1990
-%% A special patch for output.check in book environment.
-
-FUNCTION {eho.output.check}
-{ 't :=
-  duplicate$ empty$
-    { pop$ "empty " t * " in " * cite$ * warning$ }
-    'eho.output.nonnull
-  if$
-}
-
-%					apalike needs this function because
-%					the year has special punctuation;
-%					apalike ignores the month
+%                                       apalike needs this function because
+%                                       the year has special punctuation;
+%                                       apalike ignores the month
 FUNCTION {output.year.check}
 { year empty$
     { "empty year in " cite$ * warning$ }
@@ -312,9 +131,7 @@ FUNCTION {output.year.check}
 }
 
 FUNCTION {output.bibitem}
-{ outside.brackets 'bracket.state := % urlbst
-
-newline$
+{ newline$
   "\bibitem[" write$
   label write$
   "]{" write$
@@ -326,12 +143,7 @@ newline$
 }
 
 FUNCTION {fin.entry}
-{ bracket.state close.brackets = % urlbst
-    { "]" * }
-    'skip$
-  if$
-
-add.period$
+{ add.period$
   write$
   newline$
 }
@@ -347,8 +159,8 @@ FUNCTION {new.sentence}
 { output.state after.block =
     'skip$
     { output.state before.all =
-	'skip$
-	{ after.sentence 'output.state := }
+        'skip$
+        { after.sentence 'output.state := }
       if$
     }
   if$
@@ -405,64 +217,20 @@ FUNCTION {format.names}
     { namesleft #0 > }
     { s nameptr "{vv~}{ll}{, jj}{, f.}" format.name$ 't :=   % last name first
       nameptr #1 >
-	{
-	% maximum number of authors 7 (brozkeff 29.11.2010) begin
-	nameptr #1
-          #1 + =
-          numnames #10
-          > and
-            { "others" 't :=
-              #1 'namesleft := }
-            'skip$
+        { namesleft #1 >
+            { ", " * t * }
+            { numnames #2 >
+                { "," * }
+                'skip$
+              if$
+              t "others" =
+                { " et~al." * }
+                { " and " * t * }
+              if$
+            }
           if$
-	% maximum number of authors 7 (brozkeff 29.11.2010) end
-
-		namesleft #1 >
-	    { ", " * t * }
-	    { numnames #2 >
-		{ "," * }
-		'skip$
-	      if$
-	      t "others" =
-		{ " et~al." * }
-		{ " \& " * t * }    % changed from " and " for names -- BJR 10/5/89
-	      if$
-	    }
-	  if$
-	}
-	't
-      if$
-      nameptr #1 + 'nameptr :=
-      namesleft #1 - 'namesleft :=
-    }
-  while$
-}
-
-%% Added by Fri Jan 12 19:03:22 1990 on Fri Jan 12 19:03:27 1990
-%% Mainly to make sure that editors have initials before last names.
-
-FUNCTION {eho.format.names}
-{ 's :=
-  #1 'nameptr :=
-  s num.names$ 'numnames :=
-  numnames 'namesleft :=
-    { namesleft #0 > }
-    { s nameptr "{f.} {vv~}{ll}{, jj}" format.name$ 't :=  %% initials first.
-      nameptr #1 >
-	{ namesleft #1 >
-	    { ", " * t * }
-	    { numnames #2 >
-		{ "," * }
-		'skip$
-	      if$
-	      t "others" =
-		{ " et~al." * }
-		{ " \& " * t * }    % changed from " and " for names -- BJR 10/5/89
-	      if$
-	    }
-	  if$
-	}
-	't
+        }
+        't
       if$
       nameptr #1 + 'nameptr :=
       namesleft #1 - 'namesleft :=
@@ -477,7 +245,7 @@ FUNCTION {format.authors}
   if$
 }
 
-FUNCTION {format.key}			% this function is just for apalike
+FUNCTION {format.key}                   % this function is just for apalike
 { empty$
     { key field.or.null }
     { "" }
@@ -489,51 +257,17 @@ FUNCTION {format.editors}
     { "" }
     { editor format.names
       editor num.names$ #1 >
-	{ ", Eds." * }    % changed from ", editors" -- BJR 10/5/89
-	{ ", Ed." * }     % changed from ", editor" -- BJR 10/5/89
+        { ", editors" * }
+        { ", editor" * }
       if$
     }
-  if$
-}
-
-%% Added by Eric Ho <eho@word> Fri Jan 12 19:11:12 1990
-%% Mainly to call eho.format.names instead of format.names and
-%% to make Eds or Ed to be surrounded by pararentheses instead of preceeded by
-%% a comma.
-
-FUNCTION {eho.format.editors}
-{ editor empty$
-    { "" }
-    { editor eho.format.names
-      editor num.names$ #1 >
-	{ " (Eds.)" * }    % changed from ", editors" -- BJR 10/5/89
-	{ " (Ed.)" * }     % changed from ", editor" -- BJR 10/5/89
-      if$
-    }
-  if$
-}
-
-FUNCTION {format.doieprint}
-{
-  doi empty$
-  { eprint empty$
-    { "" }
-    { " (\href{" eprint * "}{\ttfamily eprint})" * }
-    if$
-  }
-  {
-    eprint empty$
-    { " (\href{https://dx.doi.org/" doi * "}{\ttfamily doi})" * }
-    { " (\href{https://dx.doi.org/" doi * "}{\ttfamily doi}, \href{" * eprint * "}{\ttfamily eprint})" * }
-    if$
-  }
   if$
 }
 
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title "t" change.case$} % fixed by C A-F and JB but doesn't work
+    { title "t" change.case$ }
   if$
 }
 
@@ -542,21 +276,21 @@ FUNCTION {n.dashify}
   ""
     { t empty$ not }
     { t #1 #1 substring$ "-" =
-	{ t #1 #2 substring$ "--" = not
-	    { "--" *
-	      t #2 global.max$ substring$ 't :=
-	    }
-	    {   { t #1 #1 substring$ "-" = }
-		{ "-" *
-		  t #2 global.max$ substring$ 't :=
-		}
-	      while$
-	    }
-	  if$
-	}
-	{ t #1 #1 substring$ *
-	  t #2 global.max$ substring$ 't :=
-	}
+        { t #1 #2 substring$ "--" = not
+            { "--" *
+              t #2 global.max$ substring$ 't :=
+            }
+            {   { t #1 #1 substring$ "-" = }
+                { "-" *
+                  t #2 global.max$ substring$ 't :=
+                }
+              while$
+            }
+          if$
+        }
+        { t #1 #1 substring$ *
+          t #2 global.max$ substring$ 't :=
+        }
       if$
     }
   while$
@@ -586,8 +320,8 @@ FUNCTION {format.bvolume}
     { "" }
     { "volume" volume tie.or.space.connect
       series empty$
-	'skip$
-	{ " of " * series emphasize * }
+        'skip$
+        { " of " * series emphasize * }
       if$
       "volume and number" number either.or.check
     }
@@ -597,17 +331,17 @@ FUNCTION {format.bvolume}
 FUNCTION {format.number.series}
 { volume empty$
     { number empty$
-	{ series field.or.null }
-	{ output.state mid.sentence =
-	    { "number" }
-	    { "Number" }
-	  if$
-	  number tie.or.space.connect
-	  series empty$
-	    { "there's a number but no series in " cite$ * warning$ }
-	    { " in " * series * }
-	  if$
-	}
+        { series field.or.null }
+        { output.state mid.sentence =
+            { "number" }
+            { "Number" }
+          if$
+          number tie.or.space.connect
+          series empty$
+            { "there's a number but no series in " cite$ * warning$ }
+            { " in " * series * }
+          if$
+        }
       if$
     }
     { "" }
@@ -618,8 +352,8 @@ FUNCTION {format.edition}
 { edition empty$
     { "" }
     { output.state mid.sentence =
-	{ edition "l" change.case$ " edition" * }
-	{ edition "t" change.case$ " edition" * }
+        { edition "l" change.case$ " edition" * }
+        { edition "t" change.case$ " edition" * }
       if$
     }
   if$
@@ -639,8 +373,8 @@ FUNCTION {multi.page.check}
       swap$ duplicate$ "," =
       swap$ "+" =
       or or
-	{ #1 'multiresult := }
-	{ t #2 global.max$ substring$ 't := }
+        { #1 'multiresult := }
+        { t #2 global.max$ substring$ 't := }
       if$
     }
   while$
@@ -651,12 +385,9 @@ FUNCTION {format.pages}
 { pages empty$
     { "" }
     { pages multi.page.check
-%	{ "pages" pages n.dashify tie.or.space.connect }
-%	{ "page" pages tie.or.space.connect }
-	{ "(pp.\" pages n.dashify tie.or.space.connect }
-	{ "(pp.\" pages tie.or.space.connect }
+        { "pages" pages n.dashify tie.or.space.connect }
+        { "page" pages tie.or.space.connect }
       if$
-      ")" *
     }
   if$
 }
@@ -667,16 +398,16 @@ FUNCTION {format.vol.num.pages}
     'skip$
     { "(" number * ")" * *
       volume empty$
-	{ "there's a number but no volume in " cite$ * warning$ }
-	'skip$
+        { "there's a number but no volume in " cite$ * warning$ }
+        'skip$
       if$
     }
   if$
   pages empty$
     'skip$
     { duplicate$ empty$
-	{ pop$ format.pages }
-	{ ", " * pages n.dashify * }    % changed from ":" for vol,pgs -- BJR 10/5/89
+        { pop$ format.pages }
+        { ":" * pages n.dashify * }
       if$
     }
   if$
@@ -686,13 +417,13 @@ FUNCTION {format.chapter.pages}
 { chapter empty$
     'format.pages
     { type empty$
-	{ "chapter" }
-	{ type "l" change.case$ }
+        { "chapter" }
+        { type "l" change.case$ }
       if$
       chapter tie.or.space.connect
       pages empty$
-	'skip$
-	{ ", " * format.pages * }
+        'skip$
+        { ", " * format.pages * }
       if$
     }
   if$
@@ -702,22 +433,8 @@ FUNCTION {format.in.ed.booktitle}
 { booktitle empty$
     { "" }
     { editor empty$
-	{ "In " booktitle emphasize * }
-	{ "In " format.editors * ", " * booktitle emphasize * }
-      if$
-    }
-  if$
-}
-
-%% Added by Eric Ho <eho@word> Fri Jan 12 19:17:37 1990
-%% Primarily to call eho.format.editors instead of format.editors.
-
-FUNCTION {eho.format.in.ed.booktitle}
-{ booktitle empty$
-    { "" }
-    { editor empty$
-	{ "In " booktitle emphasize * }
-	{ "In " eho.format.editors * ", " * booktitle emphasize * }
+        { "In " booktitle emphasize * }
+        { "In " format.editors * ", " * booktitle emphasize * }
       if$
     }
   if$
@@ -744,7 +461,7 @@ FUNCTION {format.tr.number}
 }
 
 FUNCTION {format.article.crossref}
-{ "In"							% this is for apalike
+{ "In"                                                  % this is for apalike
   " \cite{" * crossref * "}" *
 }
 
@@ -757,158 +474,51 @@ FUNCTION {format.book.crossref}
       " of " *
     }
   if$
-  "\cite{" * crossref * "}" *				% this is for apalike
+  "\cite{" * crossref * "}" *                           % this is for apalike
 }
 
 FUNCTION {format.incoll.inproc.crossref}
-{ "In"							% this is for apalike
+{ "In"                                                  % this is for apalike
   " \cite{" * crossref * "}" *
 }
-% urlbst...
-% Functions for making hypertext links.
-% In all cases, the stack has (link-text href-url)
-%
-% make 'null' specials
-FUNCTION {make.href.null}
+
+FUNCTION {format.doieprinturl}
 {
-  pop$
-}
-% make hypertex specials
-FUNCTION {make.href.hypertex}
-{
-  "\special {html:<a href=" quote$ *
-  swap$ * quote$ * "> }" * swap$ *
-  "\special {html:</a>}" *
-}
-% make hyperref specials
-FUNCTION {make.href.hyperref}
-{
-  "\href {" swap$ * "} {" * swap$ * "}" *
-}
-FUNCTION {make.href}
-{ hrefform #2 =
-    'make.href.hyperref      % hrefform = 2
-    { hrefform #1 =
-        'make.href.hypertex  % hrefform = 1
-        'make.href.null      % hrefform = 0 (or anything else)
+  doi empty$
+  { eprint empty$
+    { url empty$
+      { "" }
+      { " (\href{" url * "}{\ttfamily url})" * }
       if$
     }
-  if$
-}
-
-% FUNCTION {format.url}
-% { url empty$
-%     { "" }
-%       { hrefform #1 =
-%           { % special case -- add HyperTeX specials
-%             urlintro "\url{" url * "}" * url make.href.hypertex * }
-%           { urlintro "\url{" * url * "}" * }
-%        if$
-%      }
-%   if$
-% }
-
-% JB added this - needs "add period" at end of title
-FUNCTION {format.url}
-{ url empty$
-    { "" }
-    { ". (\href{" * url * "}{\ttfamily url})" }
-  if$
-}
-
-FUNCTION {format.eprint}
-{ eprint empty$
-    { "" }
-    { eprintprefix eprint * eprinturl eprint * make.href }
-  if$
-}
-
-% Output a URL.  We can't use the more normal idiom (something like
-% `format.url output'), because the `inbrackets' within
-% format.lastchecked applies to everything between calls to `output',
-% so that `format.url format.lastchecked * output' ends up with both
-% the URL and the lastchecked in brackets.
-FUNCTION {output.url}
-{ url empty$
-    'skip$
-    { new.block
-      format.url output
-      format.lastchecked output
+    { url empty$
+      { " (\href{" eprint * "}{\ttfamily eprint})" * }
+      { " (\href{" eprint * "}{\ttfamily eprint}, \href{" * url * "}{\ttfamily url})" * }
+      if$
     }
+    if$
+  }
+  { eprint empty$
+    { url empty$
+      { " (\href{https://dx.doi.org/" doi * "}{\ttfamily doi})" * }
+      { " (\href{https://dx.doi.org/" doi * "}{\ttfamily doi}, \href{" url * "}{\ttfamily url})" * }
+      if$
+    }
+    { url empty$
+      { " (\href{https://dx.doi.org/" doi * "}{\ttfamily doi}, \href{" * eprint * "}{\ttfamily eprint})" * }
+      { " (\href{https://dx.doi.org/" doi * "}{\ttfamily doi}, \href{" * eprint * "}{\ttfamily eprint}, \href{" * url * "}{\ttfamily url})" * }
+      if$
+    }
+    if$
+  }
   if$
 }
-
-FUNCTION {output.web.refs}
-{
-  new.block
-  output.url
-  addeprints eprint empty$ not and
-    { format.eprint output.nonnull }
-    'skip$
-  if$
-%  addeprints
-%    { eprint empty$
-%        'skip$
-%        { format.eprint output.nonnull }
-%      if$
-%    }
-%    'skip$
-%  if$
-}
-
-% % THIS DOESN'T WORK - use misc instead
-% % Webpage entry type.
-% % Title and url fields required;
-% % author, note, year, month, and lastchecked fields optional
-% % See references
-% %   ISO 690-2 http://www.nlc-bnc.ca/iso/tc46sc9/standard/690-2e.htm
-% %   http://www.classroom.net/classroom/CitingNetResources.html
-% %   http://neal.ctstateu.edu/history/cite.html
-% %   http://www.cas.usf.edu/english/walker/mla.html
-% % for citation formats for web pages.
-% FUNCTION {webpage}
-% { output.bibitem
-%   author empty$
-%     { editor empty$
-%         'skip$  % author and editor both optional
-%         { format.editors output.nonnull }
-%       if$
-%     }
-%     { editor empty$
-%         { format.authors output.nonnull }
-%         { "can't use both author and editor fields in " cite$ * warning$ }
-%       if$
-%     }
-%   if$
-% %  author empty$
-% %    'skip$
-% %    { format.authors output.nonnull }
-% %  if$
-%   new.block
-%   format.title "title" output.check
-%   inbrackets "online" output
-%   new.block
-%   year empty$
-%     'skip$
-%     { format.date "year" output.check }
-%   if$
-%   lastchecked empty$
-%     'skip$
-%     { format.lastchecked output }
-%   if$
-%   new.block
-%   format.url "url" output.check
-%   new.block
-%   note output
-%   fin.entry
-% }
-% % ...urlbst to here
 
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.title "title" output.check
   new.block
@@ -920,17 +530,11 @@ FUNCTION {article}
       format.pages output
     }
   if$
-
   new.block
   note output
-    output.web.refs  % urlbst
-  format.doieprint output
+  format.doieprinturl output
   fin.entry
 }
-
-%% Modified by Eric Ho <eho@word> on Wed Jan 10 20:30:11 1990
-%% Making it to call eho.output.check instead of output.check and eho.output
-%% instead of output.
 
 FUNCTION {book}
 { output.bibitem
@@ -940,12 +544,12 @@ FUNCTION {book}
     }
     { format.authors output.nonnull
       crossref missing$
-	{ "author and editor" editor either.or.check }
-	'skip$
+        { "author and editor" editor either.or.check }
+        'skip$
       if$
     }
   if$
-  output.year.check				% special for apalike
+  output.year.check                             % special for apalike
   new.block
   format.btitle "title" output.check
   crossref missing$
@@ -953,12 +557,8 @@ FUNCTION {book}
       new.block
       format.number.series output
       new.sentence
-%      publisher "publisher" output.check
-%      address output
-% switched order of publisher and address for book -- BJR 10/5/89
-      address eho.output	% Using eho.output instead of output.
-      publisher "publisher" eho.output.check	% Using eho.output.check
-      						% instead of output.check.
+      publisher "publisher" output.check
+      address output
     }
     { new.block
       format.book.crossref output.nonnull
@@ -967,16 +567,15 @@ FUNCTION {book}
   format.edition output
   new.block
   note output
-    output.web.refs  % urlbst
-
+  format.doieprinturl output
   fin.entry
 }
 
 FUNCTION {booklet}
 { output.bibitem
   format.authors output
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.title "title" output.check
   new.block
@@ -984,14 +583,9 @@ FUNCTION {booklet}
   address output
   new.block
   note output
-    output.web.refs  % urlbst
-
+  format.doieprinturl output
   fin.entry
 }
-
-%% Modified by Eric Ho <eho@word> on Wed Jan 10 20:27:26 1990
-%% Making it to call eho.output.check instead of output.check and eho.output
-%% instead of output.
 
 FUNCTION {inbook}
 { output.bibitem
@@ -1001,12 +595,12 @@ FUNCTION {inbook}
     }
     { format.authors output.nonnull
       crossref missing$
-	{ "author and editor" editor either.or.check }
-	'skip$
+        { "author and editor" editor either.or.check }
+        'skip$
       if$
     }
   if$
-  output.year.check				% special for apalike
+  output.year.check                             % special for apalike
   new.block
   format.btitle "title" output.check
   crossref missing$
@@ -1015,9 +609,8 @@ FUNCTION {inbook}
       new.block
       format.number.series output
       new.sentence
-      publisher "publisher" eho.output.check	% Using eho.output.check instead
-						% of output.check.
-      address eho.output	% Using eho.output instead of output.
+      publisher "publisher" output.check
+      address output
     }
     { format.chapter.pages "chapter and pages" output.check
       new.block
@@ -1027,41 +620,26 @@ FUNCTION {inbook}
   format.edition output
   new.block
   note output
-    output.web.refs  % urlbst
-
+  format.doieprinturl output
   fin.entry
 }
-
-%% Modified by Eric Ho <eho@word> on Wed Jan 10 20:27:26 1990
-%% Making it to call eho.output.check instead of output.check and eho.output
-%% instead of output.  Also modified by Eric Ho <eho@word> on Fri Jan 12
-%% 19:21:59 1990 so as to call eho.format.in.ed.booktitle instead of the old
-%% format.in.ed.booktitle.
 
 FUNCTION {incollection}
 { output.bibitem
   format.authors "author" output.check
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.title "title" output.check
   new.block
   crossref missing$
-    { eho.format.in.ed.booktitle "booktitle" output.check
-	% The above line is changed by Eric Ho <eho@word> on Fri Jan 12
-	% 19:20:28 1990 so that it'll call eho.format.in.ed.booktitle instead
-	% of format.in.ed.booktitle.
-
+    { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
-      format.chapter.pages eho.special.output
+      format.chapter.pages output
       new.sentence
-%      publisher "publisher" output.check
-%      address output
-% switched order of publisher and address for incollection -- BJR 1/3/90
-      address eho.output	% Use eho.output instead of output.
-      publisher "publisher" eho.output.check	% Use eho.output.check instead
-						% of output.check.
+      publisher "publisher" output.check
+      address output
       format.edition output
     }
     { format.incoll.inproc.crossref output.nonnull
@@ -1070,29 +648,27 @@ FUNCTION {incollection}
   if$
   new.block
   note output
-  output.web.refs  % urlbst
-  format.doieprint output
+  format.doieprinturl output
   fin.entry
 }
 
 FUNCTION {inproceedings}
 { output.bibitem
   format.authors "author" output.check
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.title "title" output.check
   new.block
   crossref missing$
-    { % format.in.ed.booktitle "booktitle" output.check
-      eho.format.in.ed.booktitle "booktitle" output.check
+    { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
-      format.pages eho.special.output
-      address eho.special.output			% for apalike
-      new.sentence					% there's no year
-      organization eho.special.output			% here so things
-      publisher eho.special.output			% are simpler
+      format.pages output
+      address output                                    % for apalike
+      new.sentence                                      % there's no year
+      organization output                               % here so things
+      publisher output                                  % are simpler
     }
     { format.incoll.inproc.crossref output.nonnull
       format.pages output
@@ -1100,8 +676,7 @@ FUNCTION {inproceedings}
   if$
   new.block
   note output
-  output.web.refs  % urlbst
-  format.doieprint output
+  format.doieprinturl output
   fin.entry
 }
 
@@ -1110,8 +685,8 @@ FUNCTION {conference} { inproceedings }
 FUNCTION {manual}
 { output.bibitem
   format.authors output
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.btitle "title" output.check
   organization address new.block.checkb
@@ -1120,15 +695,15 @@ FUNCTION {manual}
   format.edition output
   new.block
   note output
-  output.web.refs  % urlbst
+  format.doieprinturl output
   fin.entry
 }
 
 FUNCTION {mastersthesis}
 { output.bibitem
   format.authors "author" output.check
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.title "title" output.check
   new.block
@@ -1137,32 +712,30 @@ FUNCTION {mastersthesis}
   address output
   new.block
   note output
-  output.web.refs  % urlbst
-  format.doieprint output
+  format.doieprinturl output
   fin.entry
 }
 
 FUNCTION {misc}
 { output.bibitem
   format.authors output
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.title output
   new.block
   howpublished output
   new.block
   note output
-  output.web.refs  % urlbst
-  format.doieprint output
+  format.doieprinturl output
   fin.entry
 }
 
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.btitle "title" output.check
   new.block
@@ -1171,62 +744,56 @@ FUNCTION {phdthesis}
   address output
   new.block
   note output
-  output.web.refs  % urlbst
-  format.doieprint output
+  format.doieprinturl output
   fin.entry
 }
 
 FUNCTION {proceedings}
 { output.bibitem
   format.editors output
-  editor format.key output				% special for
-  output.year.check					% apalike
+  editor format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.btitle "title" output.check
   format.bvolume output
   format.number.series output
-  address output				% for apalike
-  new.sentence					% we always output
-  organization output				% a nonempty organization
-  publisher output				% here
+  address output                                % for apalike
+  new.sentence                                  % we always output
+  organization output                           % a nonempty organization
+  publisher output                              % here
   new.block
   note output
-  output.web.refs  % urlbst
-  format.doieprint output
+  format.doieprinturl output
   fin.entry
 }
 
 FUNCTION {techreport}
 { output.bibitem
   format.authors "author" output.check
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
-%  format.title "title" output.check
-  format.btitle "title" output.check            % change to ital title -- BJR
+  format.title "title" output.check
   new.block
   format.tr.number output.nonnull
   institution "institution" output.check
   address output
   new.block
   note output
-  output.web.refs  % urlbst
-  format.doieprint output
+  format.doieprinturl output
   fin.entry
 }
 
 FUNCTION {unpublished}
 { output.bibitem
   format.authors "author" output.check
-  author format.key output				% special for
-  output.year.check					% apalike
+  author format.key output                              % special for
+  output.year.check                                     % apalike
   new.block
   format.title "title" output.check
-
   new.block
   note "note" output.check
-  output.web.refs  % urlbst
-  format.doieprint output
+  format.doieprinturl output
   fin.entry
 }
 
@@ -1315,9 +882,9 @@ FUNCTION {chop.word}
   if$
 }
 
-%			There are three apalike cases: one person (Jones),
-%			two (Jones and de~Bruijn), and more (Jones et~al.).
-%			This function is much like format.crossref.editors.
+%                       There are three apalike cases: one person (Jones),
+%                       two (Jones and de~Bruijn), and more (Jones et~al.).
+%                       This function is much like format.crossref.editors.
 %
 FUNCTION {format.lab.names}
 { 's :=
@@ -1326,12 +893,12 @@ FUNCTION {format.lab.names}
   #2 >
     { pop$ " et~al." * }
     { #2 <
-	'skip$
-	{ s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
-	    { " et~al." * }
-	    { " and " * s #2 "{vv~}{ll}" format.name$ * } % " and " --  BJR 10/5/89, and Jesse Hoey
-	  if$
-	}
+        'skip$
+        { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
+            { " et~al." * }
+            { " and " * s #2 "{vv~}{ll}" format.name$ * }
+          if$
+        }
       if$
     }
   if$
@@ -1340,8 +907,8 @@ FUNCTION {format.lab.names}
 FUNCTION {author.key.label}
 { author empty$
     { key empty$
-	{ cite$ #1 #3 substring$ }
-	'key					% apalike uses the whole key
+        { cite$ #1 #3 substring$ }
+        'key                                    % apalike uses the whole key
       if$
     }
     { author format.lab.names }
@@ -1351,12 +918,12 @@ FUNCTION {author.key.label}
 FUNCTION {author.editor.key.label}
 { author empty$
     { editor empty$
-	{ key empty$
-	    { cite$ #1 #3 substring$ }
-	    'key				% apalike uses the whole key
-	  if$
-	}
-	{ editor format.lab.names }
+        { key empty$
+            { cite$ #1 #3 substring$ }
+            'key                                % apalike uses the whole key
+          if$
+        }
+        { editor format.lab.names }
       if$
     }
     { author format.lab.names }
@@ -1366,8 +933,8 @@ FUNCTION {author.editor.key.label}
 FUNCTION {editor.key.label}
 { editor empty$
     { key empty$
-	{ cite$ #1 #3 substring$ }
-	'key			% apalike uses the whole key, no organization
+        { cite$ #1 #3 substring$ }
+        'key                    % apalike uses the whole key, no organization
       if$
     }
     { editor format.lab.names }
@@ -1380,14 +947,14 @@ FUNCTION {calc.label}
   or
     'author.editor.key.label
     { type$ "proceedings" =
-	'editor.key.label			% apalike ignores organization
-	'author.key.label			% for labeling and sorting
+        'editor.key.label                       % apalike ignores organization
+        'author.key.label                       % for labeling and sorting
       if$
     }
   if$
-  ", "							% these three lines are
-  *							% for apalike, which
-  year field.or.null purify$ #-1 #64 substring$		% allows many characters
+  ", "                                                  % these three lines are
+  *                                                     % for apalike, which
+  year field.or.null purify$ #-1 #4 substring$          % uses all four digits
   *
   'label :=
 }
@@ -1400,13 +967,13 @@ FUNCTION {sort.format.names}
   numnames 'namesleft :=
     { namesleft #0 > }
     { nameptr #1 >
-	{ "   " * }
-	'skip$
-      if$						% apalike uses initials
+        { "   " * }
+        'skip$
+      if$                                               % apalike uses initials
       s nameptr "{vv{ } }{ll{ }}{  f{ }}{  jj{ }}" format.name$ 't := % <= here
       nameptr numnames = t "others" = and
-	{ "et al" * }
-	{ t sortify * }
+        { "et al" * }
+        { t sortify * }
       if$
       nameptr #1 + 'nameptr :=
       namesleft #1 - 'namesleft :=
@@ -1428,10 +995,10 @@ FUNCTION {sort.format.title}
 FUNCTION {author.sort}
 { author empty$
     { key empty$
-	{ "to sort, need author or key in " cite$ * warning$
-	  ""
-	}
-	{ key sortify }
+        { "to sort, need author or key in " cite$ * warning$
+          ""
+        }
+        { key sortify }
       if$
     }
     { author sort.format.names }
@@ -1441,14 +1008,14 @@ FUNCTION {author.sort}
 FUNCTION {author.editor.sort}
 { author empty$
     { editor empty$
-	{ key empty$
-	    { "to sort, need author, editor, or key in " cite$ * warning$
-	      ""
-	    }
-	    { key sortify }
-	  if$
-	}
-	{ editor sort.format.names }
+        { key empty$
+            { "to sort, need author, editor, or key in " cite$ * warning$
+              ""
+            }
+            { key sortify }
+          if$
+        }
+        { editor sort.format.names }
       if$
     }
     { author sort.format.names }
@@ -1458,21 +1025,21 @@ FUNCTION {author.editor.sort}
 FUNCTION {editor.sort}
 { editor empty$
     { key empty$
-	{ "to sort, need editor or key in " cite$ * warning$
-	  ""
-	}
-	{ key sortify }
+        { "to sort, need editor or key in " cite$ * warning$
+          ""
+        }
+        { key sortify }
       if$
     }
     { editor sort.format.names }
   if$
 }
 
-%			apalike uses two sorting passes; the first one sets the
-%			labels so that the `a's, `b's, etc. can be computed;
-%			the second pass puts the references in "correct" order.
-%			The presort function is for the first pass. It computes
-%			label, sort.label, and title, and then concatenates.
+%                       apalike uses two sorting passes; the first one sets the
+%                       labels so that the `a's, `b's, etc. can be computed;
+%                       the second pass puts the references in "correct" order.
+%                       The presort function is for the first pass. It computes
+%                       label, sort.label, and title, and then concatenates.
 FUNCTION {presort}
 { calc.label
   label sortify
@@ -1483,14 +1050,14 @@ FUNCTION {presort}
   or
     'author.editor.sort
     { type$ "proceedings" =
-	'editor.sort
-	'author.sort
+        'editor.sort
+        'author.sort
       if$
     }
   if$
-  #1 entry.max$ substring$	% for
-  'sort.label :=		% apalike
-  sort.label			% style
+  #1 entry.max$ substring$      % for
+  'sort.label :=                % apalike
+  sort.label                    % style
   *
   "    "
   *
@@ -1503,13 +1070,13 @@ FUNCTION {presort}
 
 ITERATE {presort}
 
-SORT		% by label, sort.label, title---for final label calculation
+SORT            % by label, sort.label, title---for final label calculation
 
-STRINGS { last.label next.extra }	% apalike labels are only for the text;
+STRINGS { last.label next.extra }       % apalike labels are only for the text;
 
-INTEGERS { last.extra.num }		% there are none in the bibliography
+INTEGERS { last.extra.num }             % there are none in the bibliography
 
-FUNCTION {initialize.extra.label.stuff}	% and hence there is no `longest.label'
+FUNCTION {initialize.extra.label.stuff} % and hence there is no `longest.label'
 { #0 int.to.chr$ 'last.label :=
   "" 'next.extra :=
   #0 'last.extra.num :=
@@ -1542,9 +1109,9 @@ ITERATE {forward.pass}
 
 REVERSE {reverse.pass}
 
-%				Now that the label is right we sort for real,
-%				on sort.label then year then title.  This is
-%				for the second sorting pass.
+%                               Now that the label is right we sort for real,
+%                               on sort.label then year then title.  This is
+%                               for the second sorting pass.
 FUNCTION {bib.sort.order}
 { sort.label
   "    "
@@ -1562,14 +1129,14 @@ FUNCTION {bib.sort.order}
 
 ITERATE {bib.sort.order}
 
-SORT		% by sort.label, year, title---giving final bibliography order
+SORT            % by sort.label, year, title---giving final bibliography order
 
 FUNCTION {begin.bib}
-{ preamble$ empty$				% no \etalchar in apalike
+{ preamble$ empty$                              % no \etalchar in apalike
     'skip$
     { preamble$ write$ newline$ }
   if$
-  "\begin{thebibliography}{}" write$ newline$		% no labels in apalike
+  "\begin{thebibliography}{}" write$ newline$           % no labels in apalike
 }
 
 EXECUTE {begin.bib}

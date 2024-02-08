@@ -79,6 +79,7 @@
   title = {Analysis of two-dimensional and three-dimensional wakes of long circular cylinders},
   booktitle = {{OCEANS} 2017 - Aberdeen},
   eprint = {https://eprints.soton.ac.uk/411819/1/Font_Garcia_et_al_2017_Analysis_of_two_dimensional_and_three_dimensional_wakes_of_long_circular_cylinders.pdf},
+  url = {https://eprints.soton.ac.uk/411819/1/Font_Garcia_et_al_2017_Analysis_of_two_dimensional_and_three_dimensional_wakes_of_long_circular_cylinders.pdf},
   abstract = {The wake behind a bluff body constitutes an intrinsically three-dimensional flow and it is known that two-dimensional simulations yield to an unphysical prediction of the body forces because of the nature of the two-dimensional Navier-Stokes equations. However, three-dimensional simulations are too computationally expensive for cases such as marine risers, which have very large aspect ratios and are exposed to a high Reynolds number flow. A quantitative and qualitative study has been performed to investigate the fundamental differences on the wake of two-dimensional and three-dimensional fixed spanwise periodic cylinders for a Reynolds number of 10^4. A very fine unifrom grid (503M points) has been used for the near and mid wake range, and it is shown that the wake presents very different vortical structures when the spanwise dimensionality is omitted. In this case, forces such as lift and drag are overpredicted. The kinetic energy spectra of the flow is also investigated to further discuss the physics inherent of each case together and it is found that the contribution of the spanwise velocity on the large wavenumbers is significantly smaller than the other velocity components.}
 }
 
@@ -189,57 +190,64 @@
 }
 
 # Talks
+@booklet{talk10,
+  title = {{Julia for HPC minisymposia, JuliaCon2024, The Netherlands}},
+  year = {2024},
+  month = {oct},
+  url = {https://juliacon.org/2024/minisymposia},
+}
+
 @booklet{talk9,
-  howpublished = {Julia for {HPC} course, {H}igh {P}erformance {C}omputing {C}enter {S}tuttgart ({HLRS}), Germany},
+  title = {{Julia for HPC course, High Performance Computing Center Stuttgart (HLRS), Germany}},
   year = {2023},
   month = {oct},
 }
 
 @booklet{talk8,
-  howpublished = {PPPL Computer Science Department’s Machine Learning seminar, Princeton University, US},
+  title = {{PPPL Computer Science Department’s Machine Learning seminar, Princeton University, US}},
   year = {2021},
   month = {sep},
 }
 
 @booklet{talk7,
-  howpublished = {Engineering Mind Podcast},
+  title = {{Engineering Mind Podcast}},
   year = {2021},
   month = {jun},
   url = {https://youtu.be/d1O3dFgvAP4},
 }
 
 @booklet{talk6,
-  howpublished = {Applied Mathematics in Aerospace Engineering seminar, Universidad Politecnica de Madrid, Spain},
+  title = {{Applied Mathematics in Aerospace Engineering seminar, Universidad Politecnica de Madrid, Spain}},
   year = {2021},
   month = {apr},
 }
 
 @booklet{talk5,
-  howpublished = {Applied Math Colloquium, University North Carolina, US},
+  title = {{Applied Math Colloquium, University North Carolina, US}},
   year = {2021},
   month = {mar},
 }
 
 @booklet{talk4,
-  howpublished = {Ocean Engineering, University Rhode Island, US},
+  title = {{Ocean Engineering, University Rhode Island, US}},
   year = {2021},
   month = {feb},
 }
 
 @booklet{talk3,
-  howpublished = {Fluid Dynamics Group at the Institute of High Performance Computing (A*STAR), Singapore},
+  title = {{Fluid Dynamics Group at the Institute of High Performance Computing (A*STAR), Singapore}},
   year = {2020},
   month = {nov},
 }
 
 @booklet{talk2,
-  howpublished = {Fluid Structure Interactions Group Seminar series, University of Southampton, UK},
+  title = {{Fluid Structure Interactions Group Seminar series, University of Southampton, UK}},
   year = {2020},
   month = {jul},
 }
 
 @booklet{talk1,
-  howpublished = {Fluid Structure Interactions Group Seminar series, University of Southampton, UK},
+  title = {{Fluid Structure Interactions Group Seminar series, University of Southampton, UK}},
   year = {2017},
   month = {may},
 }
@@ -268,16 +276,25 @@
 }
 
 # Software
-@misc{Font2018-postproc,
+@misc{Font2016PostProc,
   author = {B. Font},
   title = {Post{P}roc: A post-processing package for my {P}h{D} {CFD} simulations},
-  year = {2018},
+  year = {2016},
   publisher = {GitHub},
   journal = {GitHub repository},
   url = {https://github.com/b-fg/postproc}
 }
 
-@misc{Font2019-f2py,
+@misc{Font2018nuatsbot,
+  author = {B. Font},
+  title = {Technical analysis trading bot},
+  year = {2018},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/b-fg/nuatsbot}
+}
+
+@misc{Font2019f2py,
   author = {B. Font},
   title = {F2{P}y-{S}ockets: {A} minimal working example on how to use sockets to transfer data from {F}ortran to {P}ython and viceversa},
   year = {2019},
@@ -286,11 +303,29 @@
   url = {https://github.com/b-fg/f2py-sockets},
 }
 
-@misc{Font2020-sanspy,
+@misc{Font2020SANSpy,
   author = {B. Font},
-  title = {{SANS}py: {A} machine-learning model for the spanwise-averaged {N}avier--{S}tokes equations},
+  title = {{SANS}py: Spanwise-averaged {N}avier-–{S}tokes modelling through convolutional neural networks},
   year = {2020},
   publisher = {GitHub},
   journal = {GitHub repository},
   url = {https://github.com/b-fg/sanspy}
+}
+
+@misc{Font2022Flower1D,
+  author = {B. Font},
+  title = {Flower1{D}.jl: {F}lux reconstruction fluid flow solver for 1{D PDE}s written in {J}ulia},
+  year = {2022},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/b-fg/Flower1D.jl}
+}
+
+@misc{Weymouth2023WaterLily,
+  author = {G.D. Weymouth and B. Font},
+  title = {Water{L}ily.jl: Fast {CFD J}ulia solver based in the finite-volume and immersed boundary methods with backend-agnostic execution ({CPU} and {GPU})},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/weymouth/WaterLily.jl}
 }
