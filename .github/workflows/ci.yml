@@ -1,5 +1,4 @@
-name: Build CV and send trigger to build and deploy personal webpage repo
-
+name: CI # builds CV and triggers CI of personal webpage
 on:
   # Runs on pushes targeting the default branch
   push:
