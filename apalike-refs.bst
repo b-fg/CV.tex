@@ -680,6 +680,7 @@ FUNCTION {inproceedings}
   fin.entry
 }
 
+FUNCTION {proceedings} { inproceedings }
 FUNCTION {conference} { inproceedings }
 
 FUNCTION {manual}
@@ -731,6 +732,17 @@ FUNCTION {misc}
   fin.entry
 }
 
+FUNCTION {bill}
+{ output.bibitem
+  format.title output
+  author format.key output                              % special for
+  output.year.check                                     % apalike
+  new.block
+  note output
+  format.doieprinturl output
+  fin.entry
+}
+
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check
@@ -748,24 +760,24 @@ FUNCTION {phdthesis}
   fin.entry
 }
 
-FUNCTION {proceedings}
-{ output.bibitem
-  format.editors output
-  editor format.key output                              % special for
-  output.year.check                                     % apalike
-  new.block
-  format.btitle "title" output.check
-  format.bvolume output
-  format.number.series output
-  address output                                % for apalike
-  new.sentence                                  % we always output
-  organization output                           % a nonempty organization
-  publisher output                              % here
-  new.block
-  note output
-  format.doieprinturl output
-  fin.entry
-}
+% FUNCTION {proceedings}
+% { output.bibitem
+%   format.editors output
+%   editor format.key output                              % special for
+%   output.year.check                                     % apalike
+%   new.block
+%   format.btitle "title" output.check
+%   format.bvolume output
+%   format.number.series output
+%   address output                                % for apalike
+%   new.sentence                                  % we always output
+%   organization output                           % a nonempty organization
+%   publisher output                              % here
+%   new.block
+%   note output
+%   format.doieprinturl output
+%   fin.entry
+% }
 
 FUNCTION {techreport}
 { output.bibitem
