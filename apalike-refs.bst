@@ -124,7 +124,8 @@ FUNCTION {output.year.check}
 { year empty$
     { "empty year in " cite$ * warning$ }
     { write$
-      " (" year * extra.label * ")" *
+      % " (" year * extra.label * ")" *
+      " (" year * ")" *
       mid.sentence 'output.state :=
     }
   if$
