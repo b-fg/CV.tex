@@ -1,4 +1,13 @@
 # Journal Articles
+@article{WeymouthFont2024,
+  author = {G.D. Weymouth and B. Font},
+  year = {2024, submitted},
+  title = {{WaterLily.jl: A differentiable and backend-agnostic Julia solver to simulate incompressible viscous flow and dynamic bodies}},
+  publisher = {arXiv},
+  eprint = {https://arxiv.org/pdf/2407.16032},
+  abstract = {Integrating computational fluid dynamics (CFD) software into optimization and machine-learning frameworks is hampered by the rigidity of classic computational languages and the slow performance of more flexible high-level languages. In this work, we introduce WaterLily.jl: an open-source incompressible viscous flow solver written in the Julia language. An immersed boundary method is used to enforce the effect of solid boundaries on flow past complex geometries with arbitrary motions. The small code base is multidimensional, multiplatform and backend-agnostic (serial and multithreaded CPU, and GPU execution). Additionally, the dynamically typed language allows the solver to be fully differentiable using automatic differentiation. The computational time per time step scales linearly with the number of degrees of freedom (DOF) on CPUs, and we measure up to a 200x speed-up using CUDA kernels resulting in a cost of 1.44 nanoseconds per DOF and time step. This leads to comparable performance with low-level CFD solvers written in C and Fortran on research-scale problems, opening up exciting possible future applications on the cutting edge of machine-learning research.}
+}
+
 @article{Font2024b,
   author = {B. Font and F. Alcántara-Ávila and J. Rabault and R. Vinuesa and O. Lehmkuhl},
   year = {2024, submitted},
@@ -26,7 +35,8 @@
 }
 
 @article{Cutz2024,
-  author = {L. Cutz and S. Misara and B. Font and M. Al-Naji, W. de Jong},
+
+  author = {L. Cutz and S. Misara and B.   Font and M. Al-Naji, W. de Jong},
   year = {2024, submitted},
   title = {Hydrothermal liquefaction of Spanish crude olive pomace for biofuel and biochar production},
 }
@@ -145,6 +155,15 @@
 }
 
 # Published Abstracts
+@conference{Font2024JuliaCon,
+  author = {B. Font and G.D. Weymouth},
+  title = {{WaterLily.jl: A fast and flexible CFD solver with heterogeneous execution}},
+  year = {2024},
+  booktitle = {JuliaCon 2024, Eindhoven (Netherlands)},
+  url = {https://juliacon.org/2024/minisymposia/hpc/},
+  abstract = {In this talk, we will review how [WaterLily.jl](https://github.com/weymouth/WaterLily.jl), a computational fluid dynamics Julia solver, has been ported from its original serial-CPU implementation to a backend-agnostic solver that can be seamlessly executed using multi-threading in CPUs or in GPUs of different vendors. The transition has been accomplished using a meta-programming approach that generalizes the implementation of array iterators while also relying on [KernelAbstractions.jl](https://github.com/JuliaGPU/KernelAbstractions.jl) to specialize each kernel on the target architecture. In single-GPU tests, we show that [WaterLily.jl](https://github.com/weymouth/WaterLily.jl) is as fast as state-of-the-art CFD solvers written C++ or Fortran. Finally, we also discuss the potential of integrating ML models and differentiability into the solver.}
+}
+
 @conference{Font2024ECCOMAS,
   author = {B. Font and F. Alcántara-Ávila and J. Rabault and R. Vinuesa and O. Lehmkuhl},
   title = {Turbulent separation bubble control using deep reinforcement learning in pre-exascale machines},
@@ -279,7 +298,7 @@
   title = {{Julia for HPC minisymposia, JuliaCon2024, The Netherlands}},
   year = {2024},
   month = {jul},
-  url = {https://juliacon.org/2024/minisymposia},
+  url = {https://juliacon.org/2024/minisymposia/hpc/},
 }
 
 @bill{talk9,
@@ -422,4 +441,12 @@
   publisher = {GitHub},
   journal = {GitHub repository},
   url = {https://github.com/b-fg/SmartSOD2D}
+}
+
+@grant{DEAREL,
+    howpublished = {EuroHPC Regular Access call},
+    title = {{DEAREL: Large-scale Deep rEinforcement leARning for activE fLow controlin wings}},
+    year = {2024},
+    note = {awarded 90,000 node-hours on MareNostrum5 (EHPC-REG-2024R01-038)},
+    url = {}
 }

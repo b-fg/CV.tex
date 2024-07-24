@@ -733,6 +733,20 @@ FUNCTION {misc}
   fin.entry
 }
 
+FUNCTION {grant}
+{ output.bibitem
+  format.title output
+  new.block
+  howpublished output
+  author format.key output                              % special for
+  output.year.check                                     % apalike
+  new.block
+  note output
+  new.block
+  format.doieprinturl output
+  fin.entry
+}
+
 FUNCTION {bill}
 { output.bibitem
   format.title output
