@@ -3,7 +3,6 @@
   author = {G.D. Weymouth and B. Font},
   year = {2024, submitted},
   title = {{WaterLily.jl: A differentiable and backend-agnostic Julia solver to simulate incompressible viscous flow and dynamic bodies}},
-  publisher = {arXiv},
   eprint = {https://arxiv.org/pdf/2407.16032},
   abstract = {Integrating computational fluid dynamics (CFD) software into optimization and machine-learning frameworks is hampered by the rigidity of classic computational languages and the slow performance of more flexible high-level languages. In this work, we introduce WaterLily.jl: an open-source incompressible viscous flow solver written in the Julia language. An immersed boundary method is used to enforce the effect of solid boundaries on flow past complex geometries with arbitrary motions. The small code base is multidimensional, multiplatform and backend-agnostic (serial and multithreaded CPU, and GPU execution). Additionally, the dynamically typed language allows the solver to be fully differentiable using automatic differentiation. The computational time per time step scales linearly with the number of degrees of freedom (DOF) on CPUs, and we measure up to a 200x speed-up using CUDA kernels resulting in a cost of 1.44 nanoseconds per DOF and time step. This leads to comparable performance with low-level CFD solvers written in C and Fortran on research-scale problems, opening up exciting possible future applications on the cutting edge of machine-learning research.}
 }
@@ -16,7 +15,6 @@
 }
 
 @article{Suarez2024b,
-  doi = {10.48550/arXiv.2405.17655},
   eprint = {https://arxiv.org/pdf/2405.17655},
   author = {Suárez,  P. and Álcantara-Ávila,  F. and Miró,  A. and Rabault,  J. and Font,  B. and Lehmkuhl,  O. and Vinuesa,  R.},
   title = {Active flow control for drag reduction through multi-agent reinforcement learning on a turbulent cylinder at {$Re_D=3900$}},
@@ -26,7 +24,6 @@
 }
 
 @article{Suarez2024a,
-  doi = {10.48550/arXiv.2405.17210},
   author = {Suárez,  P. and Álcantara-Ávila,  F. and Rabault,  J. and Miró,  A. and Font,  B. and Lehmkuhl,  O. and Vinuesa,  R.},
   title = {Flow control of three-dimensional cylinders transitioning to turbulence via multi-agent reinforcement learning},
   eprint = {https://arxiv.org/pdf/2405.17655},
@@ -114,7 +111,7 @@
   pages = {105--121},
   isbn = {978-3-030-90539-2},
   doi = {10.1007/978-3-030-90539-2_7},
-  eprint = {https://upcommons.upc.edu/handle/2117/358666},
+  eprint = {https://upcommons.upc.edu/bitstream/handle/2117/358666/Contribution_TitleSupported_by_organization_x___2_.pdf?sequence=6&isAllowed=y},
   abstract = {With the recent advances in machine learning, data-driven strategies could augment wall modeling in large eddy simulation (LES). In this work, a wall model based on gradient boosted decision trees is presented. The model is trained to learn the boundary layer of a turbulent channel flow so that it can be used to make predictions for significantly different flows where the equilibrium assumptions are valid. The methodology of building the model is presented in detail. The experiment conducted to choose the data for training is described. The trained model is tested a posteriori on a turbulent channel flow and the flow over a wall-mounted hump. The results from the tests are compared with that of an algebraic equilibrium wall model, and the performance is evaluated. The results show that the model has succeeded in learning the boundary layer, proving the effectiveness of our methodology of data-driven model development, which is extendable to complex flows.}
 }
 
@@ -124,7 +121,7 @@
   title = {Turbulent wake predictions using deep convolutional neural networks},
   booktitle = {33rd Symposium on Naval Hydrodynamics},
   organization = {Office of Naval Research, US},
-  eprint = {http://eprints.soton.ac.uk/id/eprint/444591},
+  eprint = {https://b-fg.github.io/assets/pdf/Font_et_al_2020_Turbulent_wake_prediction_using_deep_convolutional_neural_networks.pdf},
   abstract = {A machine-learning based closure is explored for the prediction of the turbulent wake of flow past a circular cylinder at a high Reynolds number. We show that classic turbulence closures based on the turbulent-viscosity hypothesis are not capable of modelling the non-linear relationship between the mean quantities and the target turbulent fields. Instead, different multiple-input multiple-output auto-encoder convolutional neural networks are explored in this work to develop a data-driven closure. A detailed hyper-parameter study is completed including network architecture, loss functions and input sets, among others. A-priori results show 80\% to 90\% correlation coefficients between target and predicted turbulent fields of previously unseen data. High correlation coefficients are rapidly achieved by networks with a large number of trainable parameters, whereas smaller networks require more training epochs. The integration of the model in live simulations is theoretically discussed from its stability standpoint as well as preliminary physics-based constraints ideas to provide more stable data-driven closures.}
 }
 
