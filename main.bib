@@ -125,11 +125,27 @@
 }
 
 # Conference Proceedings
-@proceedings{Montala2024ECCOMAS,
-  author = {R. Montalà and B. Font and O. Lehmkuhl and R. Vinuesa and I. Rodriguez},
-  title = {Towards active flow control strategies through deep reinforcement learning},
+@inproceedings{Cabral2024ECCOMAS,
+  series = {WCCM 2024},
+  title = {$\phi$--flow: A Novel Physics-Constrained Architecture to Enforce Incompressibility and Boundary Conditions for Fast and Accurate Flow Predictions},
+  doi = {10.23967/eccomas.2024.002},
+  booktitle = {16th World Congress on Computational Mechanics and 4th Pan American Congress on Computational Mechanics},
+  publisher = {CIMNE},
+  author = {M. Cabral and B. Font and G.D. Weymouth},
   year = {2024},
-  booktitle = {ECCOMAS 2024, Lisbon (Portugal)},
+  collection = {WCCM 2024},
+  abstract = {Deep learning models have demonstrated remarkable capabilities at producing fast predictions of complex flow fields. However, incorporating known physics is essential to ensure that physical solutions can generalize to flow regimes not used for training. In this study, a formulation that, by construction, enforces flow incompressibility and respects the invariance of physical laws across different unit systems is introduced. We demonstrate that this approach can achieve performance improvements of up to 100 times compared to purely data-driven methods, all while maintaining fidelity to other crucial physical quantities. Moreover, we show that for canonical flow test cases, such a physics-constrained model can yield accurate results even with training datasets as small as a few hundred points and neural networks containing only a handful of neurons. It is also shown, however, that physics-constrained machine learning models are not silver bullets out of the box, and require careful consideration in their application and integration with other constraints. Specifically, this study addresses how a problem that is mathematically simple may not necessarily be straightforward in machine learning terms, and discusses ongoing efforts to bridge this gap. We conclude by discussing the place of physics-constrained machine learning models within a landscape primarily dominated by physics-informed approaches, in particular in the context of real-world problems where data and computational resources are often limited.}
+}
+
+@inproceedings{Montala2024ECCOMAS,
+  series = {WCCM 2024},
+  title = {Towards active flow control strategies through deep reinforcement learning},
+  booktitle = {16th World Congress on Computational Mechanics and 4th Pan American Congress on Computational Mechanics},
+  publisher = {CIMNE},
+  doi = {10.23967/eccomas.2024.115},
+  author = {R. Montalà and B. Font and O. Lehmkuhl and R. Vinuesa and I. Rodriguez},
+  year = {2024},
+  collection = {WCCM 2024},
   eprint = {https://arxiv.org/pdf/2411.05536},
   abstract = {This paper presents a deep reinforcement learning (DRL) framework for active flow control (AFC) to reduce drag in aerodynamic bodies. Tested on a 3D cylinder at $Re=100$, the DRL approach achieved a 9.32\% drag reduction and a 78.4\% decrease in lift oscillations by learning advanced actuation strategies. The methodology integrates a CFD solver with a DRL model using an in-memory database for efficient communication between the two instances, making it scalable to more complex flows and higher Reynolds numbers.}
 }
@@ -191,7 +207,7 @@
   abstract = {The present work proposes to explore deep reinforcement learning (DRL) methods for designing optimal active flow control (AFC) strategies for drag reduction using synthetic jets in wings. In the present study, the SD7003 airfoil is investigated at $Re=60,000$ and considering two angles of attack, $4^{\circ}$ and $14^{\circ}$. Therefore, the capabilities of combining DRL and AFC in reducing the drag coefficient in wings is assessed for both, wall-bounded and massive separated conditions, respectively.}
 }
 
-@conference{Cabral2024ECCOMAS,
+@conference{Cabral2024ECCOMASa,
   author = {M. Cabral and B. Font and G.D. Weymouth},
   title = {$\phi$--flow: {A} novel physics-constrained architecture to enforce incompressibility and boundary conditions for fast and accurate flow predictions},
   year = {2024},
