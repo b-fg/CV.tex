@@ -1,17 +1,24 @@
 # Journal Articles
+@article{Font2025,
+  title = {Deep reinforcement learning for active flow control in a turbulent separation bubble},
+  author = {B. Font and F. {Alc{\'a}ntara-{\'A}vila} and J. Rabault and R. Vinuesa and O. Lehmkuhl},
+  year = {2025},
+  journal = {Nature Communications},
+  volume = {16},
+  number = {1},
+  pages = {1422},
+  doi = {10.1038/s41467-025-56408-6},
+  eprint = {https://www.nature.com/articles/s41467-025-56408-6.pdf},
+  abstract = {The control efficacy of deep reinforcement learning (DRL) compared with classical periodic forcing is numerically assessed for a turbulent separation bubble (TSB). We show that a control strategy learned on a coarse grid works on a fine grid as long as the coarse grid captures main flow features. This allows to significantly reduce the computational cost of DRL training in a turbulent-flow environment. On the fine grid, the periodic control is able to reduce the TSB area by 6.8\%, while the DRL-based control achieves 9.0\% reduction. Furthermore, the DRL agent provides a smoother control strategy while conserving momentum instantaneously. The physical analysis of the DRL control strategy reveals the production of large-scale counter-rotating vortices by adjacent actuator pairs. It is shown that the DRL agent acts on a wide range of frequencies to sustain these vortices in time. Last, we also introduce our computational fluid dynamics and DRL open-source framework suited for the next generation of exascale computing machines.}
+}
+
+
 @article{WeymouthFont2024,
   author = {G.D. Weymouth and B. Font},
   year = {2024, submitted},
   title = {{WaterLily.jl: A differentiable and backend-agnostic Julia solver to simulate incompressible viscous flow and dynamic bodies}},
   eprint = {https://arxiv.org/pdf/2407.16032},
   abstract = {Integrating computational fluid dynamics (CFD) software into optimization and machine-learning frameworks is hampered by the rigidity of classic computational languages and the slow performance of more flexible high-level languages. In this work, we introduce WaterLily.jl: an open-source incompressible viscous flow solver written in the Julia language. An immersed boundary method is used to enforce the effect of solid boundaries on flow past complex geometries with arbitrary motions. The small code base is multidimensional, multiplatform and backend-agnostic (serial and multithreaded CPU, and GPU execution). Additionally, the dynamically typed language allows the solver to be fully differentiable using automatic differentiation. The computational time per time step scales linearly with the number of degrees of freedom (DOF) on CPUs, and we measure up to a 200x speed-up using CUDA kernels resulting in a cost of 1.44 nanoseconds per DOF and time step. This leads to comparable performance with low-level CFD solvers written in C and Fortran on research-scale problems, opening up exciting possible future applications on the cutting edge of machine-learning research.}
-}
-
-@article{Font2024b,
-  author = {B. Font and F. Alcántara-Ávila and J. Rabault and R. Vinuesa and O. Lehmkuhl},
-  year = {2024, submitted},
-  title = {Deep reinforcement learning for active flow control in a turbulent separation bubble},
-  eprint = {https://www.researchsquare.com/article/rs-4565966/v1.pdf?c=1719317674000},
 }
 
 @article{Suarez2024b,
@@ -129,6 +136,7 @@
   series = {WCCM 2024},
   title = {$\phi$--flow: {A} novel physics-constrained architecture to enforce incompressibility and boundary conditions for fast and accurate flow predictions},
   doi = {10.23967/eccomas.2024.002},
+  eprint = {https://www.scipedia.com/wd/images/a/af/Draft_Sanchez_Pinedo_107501250pap_1830.pdf},
   booktitle = {16th World Congress on Computational Mechanics and 4th Pan American Congress on Computational Mechanics},
   publisher = {CIMNE},
   author = {M. Cabral and B. Font and G.D. Weymouth},
