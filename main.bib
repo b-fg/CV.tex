@@ -1,4 +1,14 @@
 # Journal Articles
+@article{Gao2025,
+  doi = {10.48550/ARXIV.2505.16058},
+  eprint = {https://arxiv.org/pdf/2505.16058},
+  author = {M. Gao and J.N. Kutz and B. Font},
+  title = {Mesh-free sparse identification of nonlinear dynamics},
+  year = {2025, submitted},
+  abstract = {Identifying the governing equations of a dynamical system is one of the most important tasks for scientific modeling. However, this procedure often requires high-quality spatio-temporal data uniformly sampled on structured grids. In this paper, we propose mesh-free SINDy, a novel algorithm which leverages the power of neural network approximation as well as auto-differentiation to identify governing equations from arbitrary sensor placements and non-uniform temporal data sampling. We show that mesh-free SINDy is robust to high noise levels and limited data while remaining computationally efficient. In our implementation, the training procedure is straight-forward and nearly free of hyperparameter tuning, making mesh-free SINDy widely applicable to many scientific and engineering problems. In the experiments, we demonstrate its effectiveness on a series of PDEs including the Burgers' equation, the heat equation, the Korteweg-De Vries equation and the 2D advection-diffusion equation. We conduct detailed numerical experiments on all datasets, varying the noise levels and number of samples, and we also compare our approach to previous state-of-the-art methods. It is noteworthy that, even in high-noise and low-data scenarios, mesh-free SINDy demonstrates robust PDE discovery, achieving successful identification with up to 75% noise for the Burgers' equation using 5,000 samples and with as few as 100 samples and 1% noise. All of this is achieved within a training time of under one minute.
+  }
+}
+
 @article{Suarez2025a,
   author = {P. Suárez and F. Álcantara-Ávila and J. Rabault and A. Miró and B. Font and O. Lehmkuhl and R. Vinuesa},
   title = {Active flow control for drag reduction through multi-agent reinforcement learning on a turbulent cylinder at {$Re_D=3900$}},
@@ -14,7 +24,8 @@
   author = {X. Garcia and A. Miró and P. Suárez and F. Álcantara-Ávila and J. Rabault and B. Font and O. Lehmkuhl and R. Vinuesa},
   title = {Deep-reinforcement-learning-based separation control in a two-dimensional airfoil},
   year = {2025, submitted},
-  eprint = {https://doi.org/10.48550/arXiv.2502.16993},
+  doi = {https://doi.org/10.48550/arXiv.2502.16993},
+  eprint = {https://arxiv.org/pdf/2502.16993},
   abstract = {The aim of this study is to discover new active-flow-control (AFC) techniques for separation mitigation in a two-dimensional NACA 0012 airfoil at a Reynolds number of 3000. To find these AFC strategies, a framework consisting of a deep-reinforcement-learning (DRL) agent has been used to determine the action strategies to apply to the flow. The actions involve blowing and suction through jets at the airfoil surface. The flow is simulated with the numerical code Alya, which is a low-dissipation finite-element code, on a high-performance computing system. Various control strategies obtained through DRL led to 43.9\% drag reduction, while others yielded an increase in aerodynamic efficiency of 58.6\%. In comparison, periodic-control strategies demonstrated lower energy efficiency while failing to achieve the same level of aerodynamic improvements as the DRL-based approach. These gains have been attained through the implementation of a dynamic, closed-loop, time-dependent, active control mechanism over the airfoil.}
 }
 
@@ -47,6 +58,7 @@
   author = {G.D. Weymouth and B. Font},
   year = {2024, submitted},
   title = {{WaterLily.jl: A differentiable and backend-agnostic Julia solver to simulate incompressible viscous flow and dynamic bodies}},
+  doi = {https://doi.org/10.48550/arXiv.2407.16032},
   eprint = {https://arxiv.org/pdf/2407.16032},
   abstract = {Integrating computational fluid dynamics (CFD) software into optimization and machine-learning frameworks is hampered by the rigidity of classic computational languages and the slow performance of more flexible high-level languages. In this work, we introduce WaterLily.jl: an open-source incompressible viscous flow solver written in the Julia language. An immersed boundary method is used to enforce the effect of solid boundaries on flow past complex geometries with arbitrary motions. The small code base is multidimensional, multiplatform and backend-agnostic (serial and multithreaded CPU, and GPU execution). Additionally, the dynamically typed language allows the solver to be fully differentiable using automatic differentiation. The computational time per time step scales linearly with the number of degrees of freedom (DOF) on CPUs, and we measure up to a 200x speed-up using CUDA kernels resulting in a cost of 1.44 nanoseconds per DOF and time step. This leads to comparable performance with low-level CFD solvers written in C and Fortran on research-scale problems, opening up exciting possible future applications on the cutting edge of machine-learning research.}
 }
@@ -54,6 +66,7 @@
 @article{Suarez2024a,
   author = {P. Suárez and F. Álcantara-Ávila and J. Rabault and A. Miró and B. Font and O. Lehmkuhl and R. Vinuesa},
   title = {Flow control of three-dimensional cylinders transitioning to turbulence via multi-agent reinforcement learning},
+  doi = {https://doi.org/10.48550/arXiv.2405.17210},
   eprint = {https://arxiv.org/pdf/2405.17210},
   publisher = {arXiv},
   year = {2024, submitted},
