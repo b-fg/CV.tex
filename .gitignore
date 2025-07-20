@@ -5,6 +5,6 @@
 *~*
 build/*
 !build/cv.pdf
-scholar_data.tex
+scholar_data.json
 cv.sublime-workspace
 cv.sublime-project
