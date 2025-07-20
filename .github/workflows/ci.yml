@@ -22,7 +22,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          pre_compile: sudo apt-get update && sudo apt-get install -y jq
+          pre_compile: jq --version
           post_compile: make
 
       - name: Upload PDF file
