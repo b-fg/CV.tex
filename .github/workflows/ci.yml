@@ -22,7 +22,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          pre_compile: jq --version
+          pre_compile: apk --update add jq
           post_compile: make
 
       - name: Upload PDF file
