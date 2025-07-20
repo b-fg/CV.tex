@@ -30,6 +30,18 @@ jobs:
           name: PDF
           path: main.pdf
 
+      - name: Commit updated main.pdf
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -f "main.pdf" ]; then
+            git add main.pdf
+            git commit -m "Updated main.pdf from CI" || echo "No changes to commit"
+            git push
+          else
+            echo "No cache file found to commit."
+          fi
+
   trigger:
     runs-on: ubuntu-latest
     steps:
