@@ -60,13 +60,15 @@
   abstract = {The control efficacy of deep reinforcement learning (DRL) compared with classical periodic forcing is numerically assessed for a turbulent separation bubble (TSB). We show that a control strategy learned on a coarse grid works on a fine grid as long as the coarse grid captures main flow features. This allows to significantly reduce the computational cost of DRL training in a turbulent-flow environment. On the fine grid, the periodic control is able to reduce the TSB area by 6.8\%, while the DRL-based control achieves 9.0\% reduction. Furthermore, the DRL agent provides a smoother control strategy while conserving momentum instantaneously. The physical analysis of the DRL control strategy reveals the production of large-scale counter-rotating vortices by adjacent actuator pairs. It is shown that the DRL agent acts on a wide range of frequencies to sustain these vortices in time. Last, we also introduce our computational fluid dynamics and DRL open-source framework suited for the next generation of exascale computing machines.}
 }
 
-@article{WeymouthFont2024,
+@article{WeymouthFont2025,
   author = {G.D. Weymouth and B. Font},
-  year = {2024, submitted},
-  title = {{WaterLily.jl: A differentiable and backend-agnostic Julia solver to simulate incompressible viscous flow and dynamic bodies}},
-  doi = {https://doi.org/10.48550/arXiv.2407.16032},
-  eprint = {https://arxiv.org/pdf/2407.16032},
-  abstract = {Integrating computational fluid dynamics (CFD) software into optimization and machine-learning frameworks is hampered by the rigidity of classic computational languages and the slow performance of more flexible high-level languages. In this work, we introduce WaterLily.jl: an open-source incompressible viscous flow solver written in the Julia language. An immersed boundary method is used to enforce the effect of solid boundaries on flow past complex geometries with arbitrary motions. The small code base is multidimensional, multiplatform and backend-agnostic (serial and multithreaded CPU, and GPU execution). Additionally, the dynamically typed language allows the solver to be fully differentiable using automatic differentiation. The computational time per time step scales linearly with the number of degrees of freedom (DOF) on CPUs, and we measure up to a 200x speed-up using CUDA kernels resulting in a cost of 1.44 nanoseconds per DOF and time step. This leads to comparable performance with low-level CFD solvers written in C and Fortran on research-scale problems, opening up exciting possible future applications on the cutting edge of machine-learning research.}
+  title = {WaterLily.jl: A differentiable and backend-agnostic Julia solver for incompressible viscous flow around dynamic bodies},
+  doi = {10.1016/j.cpc.2025.109748},
+  journal = {Computer Physics Communications},
+  year = {2025},
+  pages = {109748},
+  eprint = {https://www.sciencedirect.com/science/article/pii/S0010465525002504/pdfft?md5=7f490317681fd1a770be45ca8cbd4c48&pid=1-s2.0-S0010465525002504-main.pdf},
+  abstract = {Integrating computational fluid dynamics (CFD) solvers into optimization and machine-learning frameworks is hampered by the rigidity of classic computational languages and the slow performance of more flexible high-level languages. In this work, we introduce WaterLily.jl: an open-source incompressible viscous flow solver written in the Julia language. An immersed boundary method is used to enforce the effect of solid boundaries on flow past complex geometries with arbitrary motions. The small code base is multidimensional, multiplatform and backend-agnostic, ie. it supports serial and multithreaded CPU execution, and GPUs of different vendors. Additionally, the pure-Julia implementation allows the solver to be fully differentiable using automatic differentiation. The computational cost per time step and grid point remains constant with increasing grid size on CPU backends, and we measure up to two orders of magnitude speed-up on a supercomputer GPU compared to serial CPU execution. This leads to comparable performance with low-level CFD solvers written in C and Fortran on research-scale problems, opening up exciting possible future applications on the cutting edge of machine-learning research.}
 }
 
 @article{Suarez2024a,
@@ -298,7 +300,7 @@
   year = {2023},
   booktitle = {76th APS Division of Fluid Dynamics Meeting Abstracts, Washington DC (US)},
   url = {https://meetings.aps.org/Meeting/DFD23/Session/R05.8},
-  abstract = {Integrating computational fluid dynamics {CFD} software into optimization and machine-learning frameworks is hampered by the rigidity of classic computational languages and the slow performance of more flexible high-level languages. WaterLily is an open-source incompressible viscous flow solver written in the Julia language. The small code base is multi-dimensional, multi-platform and backend-agnostic (serial CPU, multi-threaded, & GPU execution). The simulator is differentiable and uses automatic-differentiation internally to immerse solid geometries and optimize the pressure solver. The computational time per time step scales linearly with the number of degrees of freedom on CPUs, and we see up to a 182x speed-up using CUDA kernels. This leads to comparable performance with Fortran solvers on many research-scale problems opening up exciting possible future applications on the cutting edge of fluid mechanics and machine-learning research.}
+  abstract = {Integrating computational fluid dynamics {CFD} software into optimization and machine-learning frameworks is hampered by the rigidity of classic computational languages and the slow performance of more flexible high-level languages. WaterLily is an open-source incompressible viscous flow solver written in the Julia language. The small code base is multi-dimensional, multi-platform and backend-agnostic (serial CPU, multi-threaded, \& GPU execution). The simulator is differentiable and uses automatic-differentiation internally to immerse solid geometries and optimize the pressure solver. The computational time per time step scales linearly with the number of degrees of freedom on CPUs, and we see up to a 182x speed-up using CUDA kernels. This leads to comparable performance with Fortran solvers on many research-scale problems opening up exciting possible future applications on the cutting edge of fluid mechanics and machine-learning research.}
 }
 
 @conference{Alcantara-Avila2023ETC,
@@ -370,7 +372,37 @@
   abstract = {A two-dimensional model for three-dimensional symmetric laminar flows is described. This model is derived from the incompressible Navier-Stokes equations using the velocity-pressure formulation. By locating the origin of the three-dimensional structures on the symmetry plane and applying an appropriate treatment of the three-dimensional term remaining in the derived equations an accurate solution of the three-dimensional flow at the symmetry plane can be achieved. The backward-facing step numerical test case is used to test the performance and accuracy of the derived model. Above $Re = 400$, three-dimensional structures arise leading to different primary reattachment lengths for the two-dimensional and the three-dimensional cases. These structures are located close to the separation point. We show that using a two-dimensional transport equation for the responsible three-dimensional term would result into a reattachment length close to the three-dimensional solution. The direct benefit of this work is a significant reduction of the computational time required to achieve the three-dimensional solution of symmetric laminar flows. As a future work, a two-dimensional model of three-dimensional terms will be explored in the field of turbulence for spatially periodic flows.}
 }
 
+# Grants
+@grant{FastFlows,
+    howpublished = {NWO Veni 2024 personal grant},
+    title = {{FastFlows: Fast scale-resolving simulations of turbulent flows through physics-based machine learning}},
+    year = {2025},
+    note = {Awarded 320,000 euros ()},
+    url = {https://www.nwo.nl/en/researchprogrammes/nwo-talent-programme/projects-veni/veni-2024}
+}
+@grant{DEAREL2,
+    howpublished = {6th Madrid Turbulence Summer Workshop},
+    title = {High-lift wing separation control using deep reinforcement learning},
+    year = {2025},
+    note = {Awarded 1-month funded project at the 6th Madrid Turbulence Summer Workshop},
+    url = {https://www.upm.es/UPM/SalaPrensa/Noticias?id=CON20740&fmt=detail&prefmt=articulo}
+}
+@grant{DEAREL,
+    howpublished = {EuroHPC Regular Access call},
+    title = {{DEAREL: Large-scale deep reinforcement learning for active flow control in wings}},
+    year = {2024},
+    note = {Awarded 90,000 node-hours on MareNostrum5 (EHPC-REG-2024R01-038)},
+    url = {}
+}
+
 # Talks
+@bill{talk14,
+  title = {{AI and Deep Learning applied to Scientific Research at the Spanish Supercomputing Network Users Day, Pamplona, Spain}},
+  year = {2025},
+  month = {September},
+  url = {https://www.res.es/es/eventos/JURES/19a-jornada-de-usuarios},
+}
+
 @bill{talk13,
   title = {{AI Meets Scientific Computing: Bridging Theory and Practice, University of Bergamo, Italy}},
   year = {2025},
@@ -538,13 +570,4 @@
   publisher = {GitHub},
   journal = {GitHub repository},
   url = {https://github.com/b-fg/SmartSOD2D}
-}
-
-# Grants
-@grant{DEAREL,
-    howpublished = {EuroHPC Regular Access call},
-    title = {{DEAREL: Large-scale deep reinforcement learning for active flow control in wings}},
-    year = {2024},
-    note = {Awarded 90,000 node-hours on MareNostrum5 (EHPC-REG-2024R01-038)},
-    url = {}
 }

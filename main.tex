@@ -66,6 +66,9 @@
 \newcommand{\tabitem}{$\sbullet[.75]$~~}
 \renewcommand{\arraystretch}{1.25}
 
+% add google scholar metrics
+\input{scholar_data.tex}
+
 \begin{document}
 \pagenumbering{arabic}
 \nobibliography{main}
@@ -158,15 +161,17 @@ computational fluid dynamics; machine learning; turbulence modelling; numerical 
 \break
 
 \section{Publications}
+\vspace{-15pt}
+\hspace*{-18pt}{\hfill\href{https://scholar.google.com/citations?hl=en&user=FSwTh_gAAAAJ}{\texttt{Google scholar}}: citations=\citations{}, h-index=\hindex{}, i10-index=\iindex{}}\\
 \begin{p1}
 \textbf{Peer-reviewed journal articles}
 \begin{etaremune}
+    \item \bibentry{WeymouthFont2025}
     \item \bibentry{Gao2025}
     \item \bibentry{Suarez2025a}
     \item \bibentry{Garcia2025}
     \item \bibentry{Cutz2025}
     \item \bibentry{Font2025}
-    \item \bibentry{WeymouthFont2024}
     \item \bibentry{Suarez2024a}
     \item \bibentry{Radhakrishnan2024}
     \item \bibentry{Varela2022}
@@ -212,6 +217,7 @@ computational fluid dynamics; machine learning; turbulence modelling; numerical 
 
 \section{Invited Talks}
 \begin{etaremune}
+    \item \bibentry{talk14}
     \item \bibentry{talk13}
     \item \bibentry{talk12}
     \item \bibentry{talk11}
@@ -231,6 +237,8 @@ computational fluid dynamics; machine learning; turbulence modelling; numerical 
 \section{Grants}
 \begin{p1}
 \begin{etaremune}
+    \item \bibentry{FastFlows}
+    \item \bibentry{DEAREL2}
     \item \bibentry{DEAREL}
 \end{etaremune}
 \end{p1}
@@ -247,7 +255,7 @@ As a mentor, the goal is to motivate students to pursue an interesting scientifi
 
 \vspace{5pt}
 \begin{tabular}{p{\dimexpr 0.89\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.11\linewidth-\tabcolsep}}
-	\tabitem Wall-modelled large-eddy simulation for wind-assisted ships, TU Delft & 2025--\\
+	\tabitem C. Wang, Wall-modelled large-eddy simulation for wind-assisted ships, TU Delft & 2025--\\
 	\tabitem P. Muñoz, Non-equilibrium wall modelling using machine learning, Barcelona Supercomputing Center & 2024--\\
 	\tabitem M. Cabral, Physics-based machine learning of marine hydrodynamics, TU Delft & 2023--\\
 \end{tabular}\\
@@ -256,6 +264,8 @@ As a mentor, the goal is to motivate students to pursue an interesting scientifi
 
 \vspace{5pt}
 \begin{tabular}{p{\dimexpr 0.89\linewidth-2\tabcolsep} >{\raggedleft\arraybackslash}p{\dimexpr 0.11\linewidth-\tabcolsep}}
+	\tabitem Hydromechanics and kinematics control of a jellyfish, TU Delft & 2025 \\
+	\tabitem Generative machine learning models for turbulent flow simulations, TU Delft & 2025 \\
 	\tabitem Algebraic multi-grid solver optimization, TU Delft & 2025 \\
 	\tabitem Tandem Flettner rotors modelling, TU Delft & 2025 \\
 	\tabitem Prediction of hydrofoil ventilation onset using temporal forecasting, TU Delft & 2025 \\
@@ -326,7 +336,7 @@ Additionally, served as lecturer of the BSC summer school on AI and HPC deliveri
 \begin{p11}\setlength{\parskip}{3pt}
 I advocate for open science.
 Most of my papers have an e-print version that can be downloaded for free either on \href{https://arxiv.org/search/physics?searchtype=author&query=Font%2C+B}{arXiv} or \href{https://b-fg.github.io/}{my website.}
-The codes I write are also open-source, and you can find them in my \href{https://github.com/b-fg}{Github repository}.
+The software I develop is also open-source, and you can find it in my \href{https://github.com/b-fg}{Github repository}.
 \end{p11}
 
 \end{resume}
