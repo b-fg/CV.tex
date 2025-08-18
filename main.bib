@@ -1,4 +1,14 @@
 # Journal Articles
+@article{Xiao2025,
+  doi = {10.48550/ARXIV.2508.00645},
+  eprint = {https://arxiv.org/pdf/2508.00645},
+  author = {M. Xiao and Y. Wang and F. Rodach and B. Font and M. Kurz and others},
+  title = {{SmartFlow: A CFD-solver-agnostic deep reinforcement learning framework for computational fluid dynamics on HPC platforms}},
+  publisher = {arXiv},
+  year = {2025, submitted},
+  abstract = {Deep reinforcement learning (DRL) is emerging as a powerful tool for fluid-dynamics research, encompassing active flow control, autonomous navigation, turbulence modeling and discovery of novel numerical schemes. We introduce SmartFlow, a CFD-solver-agnostic framework for both single- and multi-agent DRL algorithms that can easily integrate with MPI-parallel CPU and GPU-accelerated solvers. Built on Relexi and SmartSOD2D, SmartFlow uses the SmartSim infrastructure library and our newly developed SmartRedis-MPI library to enable asynchronous, low-latency, in-memory communication between CFD solvers and Python-based DRL algorithms. SmartFlow leverages PyTorch's Stable-Baselines3 for training, which provides a modular, Gym-like environment API. We demonstrate its versatility via three case studies: single-agent synthetic-jet control for drag reduction in a cylinder flow simulated by the high-order FLEXI solver, multi-agent cylinder wake control using the GPU-accelerated spectral-element code SOD2D, and multi-agent wall-model learning for large-eddy simulation with the finite-difference solver CaLES. SmartFlow's CFD-solver-agnostic design and seamless HPC integration is promising to accelerate RL-driven fluid-mechanics studies.}
+}
+
 @article{Gao2025,
   doi = {10.48550/ARXIV.2505.16058},
   eprint = {https://arxiv.org/pdf/2505.16058},
@@ -177,7 +187,7 @@
 # Conference Proceedings
 @proceedings{Montala2025AIFD,
     author = {R. Montalà and B. Font and P. Suárez and J. Rabault and O. Lehmkuhl and R. Vinuesa and I. Rodriguez},
-    title = {Deep reinforcement learning for active flow control around a three-dimensional flow-separated wing at {R}e=1000},
+    title = {Deep reinforcement learning for active flow control around a three-dimensional flow-separated wing at $Re=10000$},
     year = {2025},
     booktitle = {1st International Symposium on AI and Fluid Mechanics},
     eprint = {https://www.researchgate.net/publication/392465532_Deep_Reinforcement_Learning_for_Active_Flow_Control_around_a_Three-Dimensional_Flow-Separated_Wing_at_Re_1_000},
