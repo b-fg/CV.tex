@@ -14,15 +14,14 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    env:
-      SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
       - name: Compile LaTeX document (after installing dependencies)
         uses: xu-cheng/latex-action@v3
+        env:
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
         with:
           root_file: main.tex
           pre_compile: |
@@ -30,6 +29,7 @@ jobs:
             python3 -m venv /tmp/venv
             . /tmp/venv/bin/activate
             pip install requests bs4
+            python3 -c 'import os; print("SERPAPI_API_KEY is", os.getenv("SERPAPI_API_KEY"))'
           post_compile: make
 
       - name: Upload PDF file
