@@ -24,7 +24,9 @@ jobs:
           root_file: main.tex
           pre_compile: |
             apk --update add jq python3 py3-pip
-            pip3 install requests bs4
+            python3 -m venv /tmp/venv
+            . /tmp/venv/bin/activate
+            pip install requests bs4
           post_compile: make
 
       - name: Upload PDF file
