@@ -27,7 +27,7 @@ jobs:
             python3 -m venv /tmp/venv
             . /tmp/venv/bin/activate
             pip install requests bs4
-          post_compile: make --debug=b
+          post_compile: make
 
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
