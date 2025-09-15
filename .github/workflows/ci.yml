@@ -39,7 +39,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f "main.pdf" && -f ".scholar_cache/scholar_data.json" && -f ".scholar_cache/scholar_data.tex"]; then
+          if [ -f "main.pdf" ] && [ -f ".scholar_cache/scholar_data.json" ] && [ -f ".scholar_cache/scholar_data.tex" ]; then
             git add main.pdf .scholar_cache/scholar_data.json .scholar_cache/scholar_data.tex
             git commit -m "Updated main.pdf and .scholar_cache/scholar_data.{json,tex} from CI" || echo "No changes to commit"
             git push
