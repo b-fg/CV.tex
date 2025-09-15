@@ -27,7 +27,7 @@ jobs:
         with:
           root_file: main.tex
           pre_compile: |
-            export SERPAPI_API_KEY="TEST"
+            export SERPAPI_API_KEY=${{ secrets.SERPAPI_API_KEY }}
             apk --update add jq python3 py3-pip
             python3 -m venv /tmp/venv
             . /tmp/venv/bin/activate
