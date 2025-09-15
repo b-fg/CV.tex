@@ -8,7 +8,7 @@ OUT_DIR=build
 run: $(MAIN).pdf
 
 $(MAIN).pdf: $(OUT_DIR)/$(MAIN).bbl $(MAIN).tex
-	sh get_scholar_data.sh
+	python get_scholar_data.py
 	pdflatex --output-directory=$(OUT_DIR) $(MAIN).tex -draftmode
 	pdflatex --output-directory=$(OUT_DIR) $(MAIN).tex
 # 	cp $(OUT_DIR)/$(MAIN).pdf .
@@ -17,7 +17,7 @@ $(OUT_DIR)/$(MAIN).bbl: $(OUT_DIR)/$(MAIN).aux
 	bibtex $(OUT_DIR)/$(MAIN)
 
 $(OUT_DIR)/$(MAIN).aux: $(MAIN).bib
-	sh get_scholar_data.sh
+	python get_scholar_data.py
 	pdflatex --output-directory=$(OUT_DIR) $(MAIN).tex -draftmode
 	pdflatex --output-directory=$(OUT_DIR) $(MAIN).tex -draftmode
 

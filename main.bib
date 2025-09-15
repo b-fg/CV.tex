@@ -185,13 +185,22 @@
 }
 
 # Conference Proceedings
+@proceedings{Montala2025ETMM,
+    author = {R. Montalà and B. Font and P. Suárez and J. Rabault and O. Lehmkuhl and R. Vinuesa and I. Rodriguez},
+    title = {{Discovering flow separation control strategies in 3D wings via deep reinforcement learning}},
+    year = {2025},
+    booktitle = {15th ERCOFTAC Symposium on Engineering Turbulence Modelling and Measurements},
+    eprint = {https://arxiv.org/pdf/2509.10185},
+    abstract = {In this work, deep reinforcement learning (DRL) is applied to active flow control (AFC) over a three-dimensional SD7003 wing at a Reynolds number of $Re=60000$ and angle of attack of AoA=14\deg. In the uncontrolled baseline case, the flow exhibits massive separation and a fully turbulent wake. Using a GPU-accelerated CFD solver and multi-agent training, DRL discovers control strategies that enhance lift (79\%), reduce drag (65\%), and improve aerodynamic efficiency (408\%). Flow visualizations confirm reattachment of the separated shear layer, demonstrating the potential of DRL for complex and turbulent flows. }
+}
+
 @proceedings{Montala2025AIFD,
     author = {R. Montalà and B. Font and P. Suárez and J. Rabault and O. Lehmkuhl and R. Vinuesa and I. Rodriguez},
     title = {{Deep reinforcement learning for active flow control around a three-dimensional flow-separated wing at $Re=1000$}},
     year = {2025},
     booktitle = {1st International Symposium on AI and Fluid Mechanics},
-    eprint = {https://www.researchgate.net/publication/392465532_Deep_Reinforcement_Learning_for_Active_Flow_Control_around_a_Three-Dimensional_Flow-Separated_Wing_at_Re_1_000},
-    abstract ={This study explores the use of deep reinforcement learning (DRL) for active flow control (AFC) to reduce flow separation on wings at high angles of attack. Concretely, here the DRL agent controls the flow over the three-dimensional NACA0012 wing section at the Reynolds number $Re=1000$ and angle of attack AoA=20\deg, autonomously identifying optimal control actions through real-time flow data and a reward function focused on improving aerodynamic performance. The framework integrates the GPU-accelerated computational fluid dynamics (CFD) solver SOD2D with the TF-Agents DRL library via a Redis in-memory database, enabling rapid training. This work builds on previous DRL flow-control studies, demonstrating DRL’s potential to address complex aerodynamic challenges and push the boundaries of traditional AFC methods.
+    eprint = {https://arxiv.org/pdf/2509.10195},
+    abstract = {This study explores the use of deep reinforcement learning (DRL) for active flow control (AFC) to reduce flow separation on wings at high angles of attack. Concretely, here the DRL agent controls the flow over the three-dimensional NACA0012 wing section at the Reynolds number $Re=1000$ and angle of attack AoA=20\deg, autonomously identifying optimal control actions through real-time flow data and a reward function focused on improving aerodynamic performance. The framework integrates the GPU-accelerated computational fluid dynamics (CFD) solver SOD2D with the TF-Agents DRL library via a Redis in-memory database, enabling rapid training. This work builds on previous DRL flow-control studies, demonstrating DRL’s potential to address complex aerodynamic challenges and push the boundaries of traditional AFC methods.
     }
 }
 
