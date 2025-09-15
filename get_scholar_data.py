@@ -44,7 +44,7 @@ class ScholarStats:
                 raise ValueError("SERPAPI_API_KEY environment variable not set")
 
 
-            logger.info(f"SerpAPI {self.SERPAPI_API_KEY}")
+            logger.info(f"SERPAPI_API_KEY: (not shown)") #  {self.SERPAPI_API_KEY}
             logger.info("Fetching data from SerpAPI...")
             response = requests.get(self.SERPAPI_URL, timeout=30)
             response.raise_for_status()
