@@ -18,11 +18,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Compile LaTeX document
+      - name: Install dependencies and compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          pre_compile: apk --update add jq
+          pre_compile: |
+            apk --update add jq
+            python -m pip install --upgrade pip
+            pip install requests bs4
           post_compile: make
 
       - name: Upload PDF file
