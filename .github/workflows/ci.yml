@@ -18,17 +18,37 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Update Google Scholar stats
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Install deps + run
+        run: |
+              python -m pip install --upgrade pip
+              python -m venv /tmp/venv
+              . /tmp/venv/bin/activate
+              pip install requests bs4
+              python get_scholar_data.py
+      - name: Commit updated Google scholar data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -f ".scholar_cache/scholar_data.json" ] && [ -f ".scholar_cache/scholar_data.tex" ]; then
+            git add .scholar_cache/scholar_data.json .scholar_cache/scholar_data.tex
+            git commit -m "Updated .scholar_data from CI" || echo "No changes to commit"
+            git push
+          else
+            echo "No cache files found to commit."
+          fi
+
       - name: Compile LaTeX document (after installing dependencies)
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
           pre_compile: |
             export SERPAPI_API_KEY=${{ secrets.SERPAPI_API_KEY }}
-            apk --update add jq python3 py3-pip
-            python3 -m venv /tmp/venv
-            . /tmp/venv/bin/activate
-            pip install requests bs4
-          post_compile: make
+            apk --update add jq
+          post_compile: make fetch=0
 
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
@@ -40,9 +60,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f "main.pdf" ] && [ -f ".scholar_cache/scholar_data.json" ] && [ -f ".scholar_cache/scholar_data.tex" ]; then
-            git add main.pdf .scholar_cache/scholar_data.json .scholar_cache/scholar_data.tex
-            git commit -m "Updated main.pdf and .scholar_cache/scholar_data.{json,tex} from CI" || echo "No changes to commit"
+          if [ -f "main.pdf" ]; then
+            git add main.pdf
+            git commit -m "Updated main.pdf from CI" || echo "No changes to commit"
             git push
           else
             echo "No cache files found to commit."
