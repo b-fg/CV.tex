@@ -1,4 +1,14 @@
 # Journal Articles
+@article{Rubio2025,
+  doi = {10.48550/arXiv.2512.04574},
+  eprint = {https://arxiv.org/pdf/2512.04574},
+  author = {Rubio, G. and Ntoukas, G. and Chávez-Módena, M. and Mariño, O. and Font, B. and Lehmkuhl, O. and Valero, E. and Ferrer, E.},
+  title = {Can explicit subgrid models enhance implicit {LES} simulations? A {GPU}-oriented high-order-solver perspective},
+  publisher = {arXiv},
+  year = {2025, submitted},
+  abstract = {High-order Discontinuous Galerkin (DG) methods offer excellent accuracy for turbulent flow simulations, especially when implemented on GPU-oriented architectures that favor very high polynomial orders. On modern GPUs, high-order polynomial evaluations cost roughly the same as low-order ones, provided the DG degrees of freedom fit within device memory. However, even with high-order discretizations, simulations at high Reynolds numbers still require some level of under-resolution, leaving them sensitive to numerical dissipation and aliasing effects. Here, we investigate the interplay between intrinsic DG dissipation mechanisms (implicit dissipation) -- in particular split forms and Riemann solvers -- and explicit subgrid-scale models in Large Eddy Simulations (LES). Using the three-dimensional Taylor--Green vortex at $Re=1600$ and an inviscid case ($Re\rightarrow\infty$), we evaluate kinetic energy dissipation, spectral accuracy, and numerical stability. Our results show that when stability for under-resolved turbulence is ensured through split-forms (energy- or entropy-stable) schemes, subgrid-scale (SGS) LES models are not strictly necessary. At moderate Reynolds numbers, when the spatial resolution is sufficient to capture the relevant turbulence scales (i.e., in well-resolved LES), adding SGS models does not improve accuracy because the wavenumber range where they act overlaps with the inherent numerical dissipation of the DG scheme. In contrast, when the resolution is insufficient, as is typical at high Reynolds numbers, explicit subgrid-scale models complement the numerical dissipation and enhance accuracy by removing the excess energy that numerical fluxes alone cannot dissipate. These findings provide practical guidance for choosing numerical strategies in high-order turbulence simulations.}
+}
+
 @article{Sababha2025,
   doi = {10.48550/ARXIV.2509.24556},
   eprint = {https://arxiv.org/pdf/2509.24556v1},
@@ -180,7 +190,7 @@
   pages = {105--121},
   isbn = {978-3-030-90539-2},
   doi = {10.1007/978-3-030-90539-2_7},
-  eprint = {https://upcommons.upc.edu/bitstream/handle/2117/358666/Contribution_TitleSupported_by_organization_x___2_.pdf?sequence=6&isAllowed=y},
+  eprint = {https://b-fg.github.io/assets/pdf/Radhakrishnan_et_al_2021_A_data-driven_wall-shear_stress_model_for_LES.pdf},
   abstract = {With the recent advances in machine learning, data-driven strategies could augment wall modeling in large eddy simulation (LES). In this work, a wall model based on gradient boosted decision trees is presented. The model is trained to learn the boundary layer of a turbulent channel flow so that it can be used to make predictions for significantly different flows where the equilibrium assumptions are valid. The methodology of building the model is presented in detail. The experiment conducted to choose the data for training is described. The trained model is tested a posteriori on a turbulent channel flow and the flow over a wall-mounted hump. The results from the tests are compared with that of an algebraic equilibrium wall model, and the performance is evaluated. The results show that the model has succeeded in learning the boundary layer, proving the effectiveness of our methodology of data-driven model development, which is extendable to complex flows.}
 }
 
@@ -407,8 +417,8 @@
     howpublished = {NWO Veni 2024 personal grant},
     title = {{FastFlows: Fast scale-resolving simulations of turbulent flows through physics-based machine learning}},
     year = {2025},
-    note = {Awarded 320,000 euros ()},
-    url = {https://www.nwo.nl/en/researchprogrammes/nwo-talent-programme/projects-veni/veni-2024}
+    note = {Awarded 320,000 euros (NWO file number 21886)},
+    url = {https://doi.org/10.61686/TPHBS84265}
 }
 @grant{DEAREL2,
     howpublished = {6th Madrid Turbulence Summer Workshop},
