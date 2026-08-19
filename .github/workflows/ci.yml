@@ -69,18 +69,17 @@ jobs:
 
       - name: Publish main.pdf and Google Scholar data to the release
         run: |
+          cat > "$RUNNER_TEMP/notes.md" <<EOF
+          Rolling release: assets are overwritten by CI on every build.
+
+          Last build: $(date -u +'%Y-%m-%d %H:%M UTC') from commit ${GITHUB_SHA::7}.
+          Download: https://github.com/${GITHUB_REPOSITORY}/releases/latest/download/main.pdf
+          EOF
           if ! gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release create "$RELEASE_TAG" \
-              --title "Latest CV" \
-              --notes "Rolling release: assets are overwritten by CI on every build."
+            gh release create "$RELEASE_TAG" --title "Latest CV" --notes-file "$RUNNER_TEMP/notes.md"
           fi
           gh release upload "$RELEASE_TAG" main.pdf .scholar_cache/scholar_data.json --clobber
-          gh release edit "$RELEASE_TAG" \
-            --title "Latest CV" \
-            --notes "Rolling release: assets are overwritten by CI on every build.
-
-Last build: $(date -u +'%Y-%m-%d %H:%M UTC') from commit ${GITHUB_SHA::7}.
-Download: https://github.com/${GITHUB_REPOSITORY}/releases/latest/download/main.pdf"
+          gh release edit "$RELEASE_TAG" --title "Latest CV" --notes-file "$RUNNER_TEMP/notes.md"
 
   trigger:
     runs-on: ubuntu-latest
