@@ -22,6 +22,8 @@ class ScholarStats:
         self.CACHE_DIR = Path('./.scholar_cache')
         self.CACHE_FILE_JSON = self.CACHE_DIR / 'scholar_data.json'
         self.CACHE_FILE_TEX = self.CACHE_DIR / 'scholar_data.tex'
+        # Last-resort fallback: the JSON published by CI on the rolling "latest" release
+        self.RELEASE_CACHE_URL = 'https://github.com/b-fg/CV.tex/releases/latest/download/scholar_data.json'
 
     def run(self):
         """Main entry point to fetch scholar data"""
@@ -137,7 +139,7 @@ class ScholarStats:
             logger.error(f"Failed to save to cache: {e}")
 
     def load_from_cache(self):
-        """Load data from cache file"""
+        """Load data from the local cache file, falling back to the release asset"""
         try:
             if self.CACHE_FILE_JSON.exists():
                 with open(self.CACHE_FILE_JSON, 'r') as f:
@@ -145,7 +147,20 @@ class ScholarStats:
         except (json.JSONDecodeError, IOError) as e:
             logger.warning(f"Failed to load from cache: {e}")
 
-        return None
+        return self.load_from_release()
+
+    def load_from_release(self):
+        """Download the scholar data last published by CI (GitHub release asset)"""
+        try:
+            logger.info(f"Downloading cached scholar data from {self.RELEASE_CACHE_URL}")
+            response = requests.get(self.RELEASE_CACHE_URL, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            self.save_to_cache(data)
+            return data
+        except Exception as e:
+            logger.warning(f"Failed to download scholar data from release: {e}")
+            return None
 
     def save_data_file(self, data):
         """Save data to LaTeX file for CV compilation"""

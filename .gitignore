@@ -1,9 +1,19 @@
+# LaTeX build artefacts
 *.log
 *.gz
 *.aux
 *.out
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
 *~*
-build/*
-!build/cv.pdf
+build/
+
+# Build outputs published by CI to the "latest" GitHub release -- not tracked on main
+main.pdf
+.scholar_cache/
+
+# Editor files
 cv.sublime-workspace
 cv.sublime-project

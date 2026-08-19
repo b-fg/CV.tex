@@ -1,72 +1,86 @@
-name: CI # builds CV and triggers CI of personal webpage
+name: CI # builds CV, publishes it to the "latest" release, and triggers CI of personal webpage
+#
+# Design: CI never commits to `main`. Build outputs (main.pdf and the Google
+# Scholar cache) are uploaded as assets of a rolling GitHub Release tagged
+# `latest`, so the local clone never falls behind the remote after a push.
+#
+# Stable download URL:
+#   https://github.com/b-fg/CV.tex/releases/latest/download/main.pdf
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
 
+  # Weekly refresh of the Google Scholar metrics
   schedule:
-      - cron: "0 0 * * 1"
+    - cron: "0 0 * * 1"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+permissions:
+  contents: write # needed to create/update the release and its assets
+
+# Never run two builds at once (a cron run and a push run would race on the release)
+concurrency:
+  group: cv-build
+  cancel-in-progress: false
 
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: latest
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Update Google Scholar stats
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.12
-      - name: Install deps + run
-        run: |
-              python -m pip install --upgrade pip
-              python -m venv /tmp/venv
-              . /tmp/venv/bin/activate
-              pip install requests bs4
-              export SERPAPI_API_KEY=${{ secrets.SERPAPI_API_KEY }}
-              python get_scholar_data.py
-      - name: Commit updated Google scholar data
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f ".scholar_cache/scholar_data.json" ] && [ -f ".scholar_cache/scholar_data.tex" ]; then
-            git add .scholar_cache/scholar_data.json .scholar_cache/scholar_data.tex
-            git commit -m "Updated .scholar_data from CI" || echo "No changes to commit"
-            git push
-          else
-            echo "No cache files found to commit."
-          fi
 
-      - name: Compile LaTeX document (after installing dependencies)
+      - name: Restore previous Google Scholar data (fallback if SerpAPI fails)
+        run: |
+          mkdir -p .scholar_cache
+          gh release download "$RELEASE_TAG" --pattern scholar_data.json --dir .scholar_cache --clobber \
+            || echo "No previous scholar data in release '$RELEASE_TAG' (first run?)"
+
+      - name: Update Google Scholar stats
+        env:
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests bs4
+          python get_scholar_data.py
+
+      - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          pre_compile: |
-            apk --update add jq
-          post_compile: make fetch=0
 
-      - name: Upload PDF file
+      - name: Upload PDF as workflow artifact
         uses: actions/upload-artifact@v4
         with:
           name: PDF
           path: main.pdf
 
-      - name: Commit updated main.pdf and Google scholar data
+      - name: Publish main.pdf and Google Scholar data to the release
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f "main.pdf" ]; then
-            git add main.pdf
-            git commit -m "Updated main.pdf from CI" || echo "No changes to commit"
-            git push
-          else
-            echo "No cache files found to commit."
+          if ! gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" \
+              --title "Latest CV" \
+              --notes "Rolling release: assets are overwritten by CI on every build."
           fi
+          gh release upload "$RELEASE_TAG" main.pdf .scholar_cache/scholar_data.json --clobber
+          gh release edit "$RELEASE_TAG" \
+            --title "Latest CV" \
+            --notes "Rolling release: assets are overwritten by CI on every build.
+
+Last build: $(date -u +'%Y-%m-%d %H:%M UTC') from commit ${GITHUB_SHA::7}.
+Download: https://github.com/${GITHUB_REPOSITORY}/releases/latest/download/main.pdf"
 
   trigger:
     runs-on: ubuntu-latest
