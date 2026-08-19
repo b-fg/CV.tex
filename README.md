@@ -1,4 +1,8 @@
-# Curriculum Vitae
+# Repo moved to [b-fg/CV.typ](https://github.com/b-fg/CV.typ)
+
+This repository is now archived and the ported to typst.
+
+## Curriculum Vitae
 
 [![](https://img.shields.io/badge/CV-download-blue)](https://github.com/b-fg/CV.tex/releases/latest/download/main.pdf) [![CI](https://github.com/b-fg/CV.tex/workflows/CI/badge.svg)](https://github.com/b-fg/CV.tex/actions)
 
